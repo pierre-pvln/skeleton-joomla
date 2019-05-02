@@ -1,5 +1,5 @@
 --- 
-# Scripts to create the default local Joomla! development files and folder environment
+# Scripts to create the default local Joomla! development files and folder skeleton from several git repositories
 --- 
 ```
 SET git_username=pierre-pvln
