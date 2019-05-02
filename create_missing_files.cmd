@@ -235,7 +235,7 @@ CD code
 	CD doc
 		IF NOT EXIST "README.md" (
 			ECHO --- 
-			ECHO # Folder with additional documentation
+			ECHO # Folder with additional documentation for %extensionFolderName% extension
 			ECHO --- 
 		) >README.md
 	CD ..
