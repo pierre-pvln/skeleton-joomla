@@ -39,8 +39,8 @@ IF NOT EXIST "README.md" (
 	ECHO # Files in this folder are shared between different scripts.
 	ECHO ---
 	) >README.md
-CD ..
 IF %VERBOSE%==YES ECHO [%~n0 ] ... Files for _bin created succesfully.
+CD ..
 
 :: ==================
 :: SETTINGS
@@ -56,8 +56,8 @@ IF NOT EXIST "README.md" (
 	ECHO # Files in this folder are shared between different scripts.
 	ECHO ---
 	) >README.md
-CD ..
 IF %VERBOSE%==YES ECHO [%~n0 ] ... Files for _set created succesfully.
+CD ..
 
 :: ==================
 :: TEMPORARY FILES
@@ -73,8 +73,8 @@ IF NOT EXIST "README.md" (
 	ECHO # Folder is shared between different scripts.
 	ECHO ---
 	) >README.md
-CD ..
 IF %VERBOSE%==YES ECHO [%~n0 ] ... Files for _tmp created succesfully.
+CD ..
 
 :: ==================
 :: BUILD SCRIPTS
@@ -123,8 +123,8 @@ IF NOT EXIST "CHANGELOG.md" (
 	ECHO ^<li^>Initial version^</li^>
 	ECHO ^</ul^>
 	) >CHANGELOG.md
-CD ..
 IF %VERBOSE%==YES ECHO [%~n0 ] ... Files for bld created succesfully.
+CD ..
 
 :: ==================
 :: DEPLOYMENT SCRIPTS
@@ -174,8 +174,8 @@ IF NOT EXIST "CHANGELOG.md" (
 	ECHO ^<li^>Initial version^</li^>
 	ECHO ^</ul^>
 	) >CHANGELOG.md
-CD ..
 IF %VERBOSE%==YES ECHO [%~n0 ] ... Files for dpl created succesfully.
+CD ..
 
 :: ==================
 :: MISCELLANEOUS
@@ -190,8 +190,8 @@ IF NOT EXIST "README.md" (
 	ECHO # Folder for miscellaneous info for the %extensionFolderName% Joomla! extension.
 	ECHO ---
 	) >README.md
-CD ..
 IF %VERBOSE%==YES ECHO [%~n0 ] ... Files for misc created succesfully.
+CD ..
 
 :: ==================
 :: ACTUAL CODE
@@ -259,8 +259,8 @@ CD src
 		) >CHANGELOG.md
 	CD ..
 
-CD ..
 IF %VERBOSE%==YES ECHO [%~n0 ] ... Files for src created succesfully.
+CD ..
 
 :: ==================
 :: STAGING SCRIPTS
@@ -310,8 +310,8 @@ IF NOT EXIST "CHANGELOG.md" (
 	ECHO ^<li^>Initial version^</li^>
 	ECHO ^</ul^>
 	) >CHANGELOG.md
-CD ..
 IF %VERBOSE%==YES ECHO [%~n0 ] ... Files for stg created succesfully.
+CD ..
 
 :: ==================
 :: STRUCTURE SCRIPTS
@@ -335,8 +335,8 @@ IF NOT EXIST "CHANGELOG.md" (
 	ECHO ^<li^>Initial version^</li^>
 	ECHO ^</ul^>
 	) >CHANGELOG.md
-CD ..
 IF %VERBOSE%==YES ECHO [%~n0 ] ... Files for struc created succesfully.
+CD ..
 
 GOTO CLEAN_EXIT_SUBSCRIPT
 
