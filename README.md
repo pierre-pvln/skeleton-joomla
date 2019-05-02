@@ -7,4 +7,5 @@ cd MY_EXTENSION
 git clone --branch master git@github.com:pierre-pvln/structure_joomla.git struc
 cd struc
 _create-it-all.cmd
+
 ```
