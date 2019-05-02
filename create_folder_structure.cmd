@@ -44,12 +44,12 @@ IF NOT EXIST dpl   (md dpl)
 IF %VERBOSE%==YES ECHO [%~n0 ] ... Creating misc	 
 IF NOT EXIST misc  (md misc)
 
-IF %VERBOSE%==YES ECHO [%~n0 ] ... Creating src
-IF NOT EXIST src   (md src)
-	CD src
-		IF NOT EXIST code  (md code)
-		IF NOT EXIST doc   (md doc)
-		IF NOT EXIST tst   (md tst)
+IF %VERBOSE%==YES ECHO [%~n0 ] ... Creating code
+IF NOT EXIST code   (md code)
+	CD code
+		IF NOT EXIST src  (md src)
+		IF NOT EXIST doc  (md doc)
+		IF NOT EXIST tst  (md tst)
 	CD ..
 
 IF %VERBOSE%==YES ECHO [%~n0 ] ... Creating stg 
