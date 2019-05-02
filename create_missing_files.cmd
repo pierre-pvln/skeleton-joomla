@@ -234,7 +234,7 @@ CD src
 	CD doc
 		IF NOT EXIST "README.md" (
 			ECHO --- 
-			ECHO # Folder with additional documentation >README.md
+			ECHO # Folder with additional documentation
 			ECHO --- 
 		) >README.md
 	CD ..
