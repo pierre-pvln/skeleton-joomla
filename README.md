@@ -5,7 +5,7 @@
 SET git_username=pierre-pvln
 md MY_NEW_EXTENSION
 cd MY_NEW_EXTENSION
-git clone git@github.com:%git_username%/structure_joomla.git struc
+git clone git@github.com:%git_username%/structure-joomla.git struc
 cd struc
 _create-it-all.cmd
 ```
