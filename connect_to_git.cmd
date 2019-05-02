@@ -28,7 +28,12 @@ IF "%extensionFolderName%" == "" (
 SET git_username=pierre-pvln
 
 
-CD ./struc
+:: ==
+SET remote_git_repository=stage-joomla
+SET local_git_repository=stg
+:: ==
+
+CD ./%local_git_repository%
 
 IF %VERBOSE%==YES ECHO [%~n0 ] ... Currently running in %CD%
 ::
@@ -36,21 +41,21 @@ IF %VERBOSE%==YES ECHO [%~n0 ] ... Currently running in %CD%
 ::
 IF %VERBOSE%==YES ECHO [%~n0 ] ... Check if folder is under git control
 git status
-:: if so initialize git in folder and set default values
+:: if not initialize git in folder and set default values
 IF %ERRORLEVEL% NEQ 0 (
    IF %VERBOSE%==YES ECHO [%~n0 ] ... This folder is not under git control: Initializing git
-   git init
-   git remote add origin git@github.com:%git_username%/dev_struc_joomla.git
-   git fetch --all
-   git pull origin master
+   git clone git@github.com:%git_username%/%remote_git_repository%.git
    IF %ERRORLEVEL% NEQ 0 (
-		SET ERROR_MESSAGE=[ERROR] [%~n0 ] Remote reporitory git@github.com:%git_username%/dev_struc_joomla.git not found ...
+		SET ERROR_MESSAGE=[ERROR] [%~n0 ] Remote reporitory git@github.com:%git_username%/%remote_git_repository%.git not found ...
 		GOTO ERROR_EXIT_SUBSCRIPT
    )
    git config --local user.name Pierre Veelen
    git config --local user.email pierre@pvln.nl
    git config --local color.ui auto
 )
+IF %VERBOSE%==YES ECHO [%~n0 ] ... This folder is under git control
+
+
 
 
 
