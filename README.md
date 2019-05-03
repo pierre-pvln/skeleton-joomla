@@ -1,7 +1,7 @@
 --- 
-## Scripts to create the default local Joomla! development files and folder skeleton from several git repositories
+# Scripts to create the default local Joomla! development files and folder skeleton from several git repositories
 --- 
-# Initialize
+## Initialize
 Go to the directory in wich the Joomla! extension folder skeleton should be created
 ```
 SET git_username=pierre-pvln
