@@ -62,12 +62,12 @@ IF %ERRORLEVEL% NEQ 0 (
 )
 IF %VERBOSE%==YES ECHO [%~n0 ] ... Folder structure created succesfully.
 
-CALL ./struc/connect_to_git.cmd
+CALL ./struc/get_remote_repositories.cmd
 IF %ERRORLEVEL% NEQ 0 (
-   SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... Script connect_to_git.cmd returned error %ERRORLEVEL%
+   SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... Script get_remote_repositories.cmd returned error %ERRORLEVEL%
    GOTO ERROR_EXIT
 )
-IF %VERBOSE%==YES ECHO [%~n0 ] ... Connection to GIT created succesfully.
+IF %VERBOSE%==YES ECHO [%~n0 ] ... Got remote repositories succesfully.
 
 CALL ./struc/create_missing_files.cmd
 IF %ERRORLEVEL% NEQ 0 (
