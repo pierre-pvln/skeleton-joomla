@@ -23,9 +23,9 @@ So we can merge them to production (master branch) and/or development (develop b
 
 ## When working on the Joomla! extension
 
-The folder \code\src contains the code for the Joomla! extension
-The folder \code\tst contains the (if any) tests for the Joomla! extension
-The folder \code\doc contains the documentation for the Joomla! extension
+The folder \code\src contains the code for the Joomla! extension.<br/>
+The folder \code\tst contains the (if any) tests for the Joomla! extension.<br/>
+The folder \code\doc contains the documentation for the Joomla! extension.<br/>
 
 ---
 # Process scripts fo build, stage, deploy or skeleton
