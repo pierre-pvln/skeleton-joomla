@@ -12,8 +12,8 @@ git clone git@github.com:%git_username%/skeleton-joomla.git struc
 cd struc
 _create-it-all.cmd
 ```
-Git Flow has now been created for all the relevant directories.
-The assumption is that during the development of the extension the build, stage, deploy or skeleton process might be updated also.
+Git Flow has now been created for all the relevant directories.<br/>
+The assumption is that during the development of the extension the build, stage, deploy or skeleton process might be updated also.<br/>
 Therefore the folders \bld, \stg, \dpl, and \struc are swithed to branch: FROM_%joomla_extensionname%.<br/>
 So we can merge them to production (master branch) and/or development (develop branch) at a later stage.
 ## Working on the Joomla! extension
