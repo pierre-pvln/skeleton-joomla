@@ -1,6 +1,5 @@
---- 
 # Scripts to create the default local Joomla! development files and folder skeleton from several git repositories
-
+--- 
 ## Initialize
 Go to the directory in which the Joomla! extension skeleton folder and files should be created
 ```
@@ -17,21 +16,23 @@ The assumption is that during the development of the extension the build, stage,
 Therefore the folders \bld, \stg, \dpl, and \struc are swithed to branch: FROM_%joomla_extensionname%.<br/>
 So we can merge them to production (master branch) and/or development (develop branch) at a later stage.
 
---- 
 # Joomla! extension code
 
 ## When working on the Joomla! extension
+
 The folders \code\src contains the code for the Joomla! extension
 
---- 
 # Process scripts fo build, stage, deploy or skeleton
---- 
+ 
 ## After some changes
+
 Push changes to remote git repository.
 ```
 HOW TO DO THAT
 ```
 ## When changes are checked and can be merged to master 
+
+Merge changes to ....
 ```
 HOW TO DO THAT
 ```
