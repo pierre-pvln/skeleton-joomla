@@ -41,9 +41,9 @@ SET remote_git_repository=deploy-joomla
 SET local_git_repository=dpl
 CALL:GIT_FLOW_INIT
 
-::SET remote_git_repository=skeleton-joomla
-::SET local_git_repository=struc
-::CALL:GIT_FLOW_INIT
+SET remote_git_repository=skeleton-joomla
+SET local_git_repository=struc
+CALL:GIT_FLOW_INIT
 
 
 GOTO CLEAN_EXIT_SUBSCRIPT
