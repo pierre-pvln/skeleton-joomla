@@ -41,13 +41,11 @@ SET remote_git_repository=deploy-joomla
 SET local_git_repository=dpl
 CALL:GIT_FLOW_INIT
 
-SET remote_git_repository=skeleton-joomla
-SET local_git_repository=struc
-CALL:GIT_FLOW_INIT
-
-:: Go back to master branch
-CD local_git_repository
-git checkout master
+:: Don't initialize gitflow for skeleton here.
+:: Batch file crashes...  
+::SET remote_git_repository=skeleton-joomla
+::SET local_git_repository=struc
+::CALL:GIT_FLOW_INIT
 
 GOTO CLEAN_EXIT_SUBSCRIPT
 
