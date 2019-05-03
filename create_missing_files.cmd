@@ -232,9 +232,9 @@ CD code
 			ECHO # Author:        pierre@pvln.nl
 			ECHO #
 			ECHO # For extension: %extensionFolderName%
-			ECHO.
- 			ECHO # Using Semantic Versioning (2.0.0) 
-			ECHO # Major.Minor[.patch]
+			ECHO #
+ 			ECHO # Using Semantic Versioning 2.0.0 
+			ECHO # Major.Minor.[patch]
 			ECHO #
 			ECHO # In summary:
 			ECHO # Major releases indicate a break in backward compatibility.
@@ -250,7 +250,6 @@ CD code
 			ECHO majorversion=0
 			ECHO minorversion=0
 			ECHO patchversion=1
-			ECHO.
 		) >_version.txt
 	CD ..
 	
