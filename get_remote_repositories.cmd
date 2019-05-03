@@ -45,6 +45,9 @@ SET remote_git_repository=skeleton-joomla
 SET local_git_repository=struc
 CALL:GIT_FLOW_INIT
 
+:: Go back to master branch
+CD local_git_repository
+git checkout master
 
 GOTO CLEAN_EXIT_SUBSCRIPT
 
