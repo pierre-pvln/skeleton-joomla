@@ -226,6 +226,32 @@ CD code
 			ECHO ^<li^>Initial version^</li^>
 			ECHO ^</ul^>
 		) >CHANGELOG.md
+		IF NOT EXIST "_version.txt" (
+			ECHO # Name:          _version.txt
+			ECHO # Purpose:       set the versioning elements to a value
+			ECHO # Author:        pierre@pvln.nl
+			ECHO #
+			ECHO # For extension: %extensionFolderName%
+			ECHO.
+ 			ECHO # Using Semantic Versioning (2.0.0) 
+			ECHO # Major.Minor[.patch]
+			ECHO #
+			ECHO # In summary:
+			ECHO # Major releases indicate a break in backward compatibility.
+			ECHO # - change of folder structure
+			ECHO # - change of file name of generic files
+			ECHO #
+			ECHO # Minor releases indicate the addition of new features or a significant change to existing features.
+			ECHO # 
+			ECHO # Patch releases indicate that bugs have been fixed.
+			ECHO # 
+			ECHO # Changes should be commented in CHANGELOG.md
+			ECHO #
+			ECHO majorversion=0
+			ECHO minorversion=0
+			ECHO patchversion=1
+			ECHO.
+		) >_version.txt
 	CD ..
 	
 	IF NOT EXIST doc (
