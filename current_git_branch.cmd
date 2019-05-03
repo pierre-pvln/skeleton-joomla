@@ -18,7 +18,6 @@ IF "%VERBOSE%" == "" (
    SET VERBOSE=YES
 )
 
-IF %VERBOSE%==YES ECHO ... Determine current local branch name
 :: Get current branch in environment variable
 :: https://ss64.com/nt/for_cmd.html
 ::
@@ -30,7 +29,7 @@ FOR /F %%G IN ('git rev-parse --abbrev-ref HEAD') DO SET currentGitBranch=%%G
 SET currentGitBranch=%currentGitBranch: =%
    
 :: show the result 
-IF %VERBOSE%==YES ECHO ... Current branch: %currentGitBranch%
+IF %VERBOSE%==YES ECHO ... Current local branch: %currentGitBranch%
 
 :: current git branch is determined 
 
