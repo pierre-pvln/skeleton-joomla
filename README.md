@@ -1,3 +1,4 @@
+--- 
 # Scripts to create the default local Joomla! development files and folder skeleton from several git repositories
 --- 
 ## Initialize
