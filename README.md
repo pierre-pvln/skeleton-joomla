@@ -28,7 +28,7 @@ The folder \code\tst contains the (if any) tests for the Joomla! extension.<br/>
 The folder \code\doc contains the documentation for the Joomla! extension.<br/>
 
 ---
-# Process scripts fo build, stage, deploy or skeleton
+# Process scripts for build, stage, deploy or skeleton
 ---
 
 ## After some changes
