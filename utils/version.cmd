@@ -5,8 +5,8 @@
 ::           2018 08 21 - semantic versioning added
 ::           2019 05 29 - new method for setting version added 
 
-:: Using Semantic Versioning (2.0.0) 
-:: Major.Minor[.patch]
+:: Using Semantic Versioning (2.0.0) and adding [.development] 
+:: Major.Minor[.patch][.development]
 ::
 :: In summary:
 :: Major releases indicate a break in backward compatibility.
@@ -17,12 +17,16 @@
 :: - Language files added
 ::
 :: Patch releases indicate that bugs have been fixed.
+::
+:: Development version used to enable auto update feature within Joomla!
+::
 
 :: Retrieving build version parameters for default settings
 ::
 SET majorversion=""
 SET minorversion=""
 SET patchversion=""
+SET devversion=""
 
 IF NOT EXIST "..\code\src\_version.txt" (
    SET ERROR_MESSAGE=[ERROR] File ..\code\src\_version.txt with version parameters doesn't exist
@@ -58,11 +62,15 @@ IF "%patchversion%" == "" (
 	ECHO [INFO ]The patchversion is not defined. Setting it to 0.
 	SET patchversion=0
 )
+IF "%devversion%" == "" (
+	ECHO [INFO ]The patchversion is not defined. Setting it to 0.
+	SET patchversion=0
+)
 
 :: Remove cleaned version file
 del "..\_bin\version_clean.txt"
 
-SET version=v%majorversion%.%minorversion%.%patchversion%
+SET version=v%majorversion%.%minorversion%.%patchversion%.%devversion%
 
 GOTO CLEAN_EXIT_SUBSCRIPT
 
