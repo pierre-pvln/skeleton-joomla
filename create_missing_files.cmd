@@ -56,11 +56,6 @@ IF NOT EXIST "README.md" (
 	ECHO # Files in this folder are shared between different scripts.
 	ECHO ---
 	) >README.md
-:: Copy files
-:: /y = don't prompt when overwriting files from source that already exist in destination.
-::
-xcopy ..\struc\utils\name.cmd /y
-xcopy ..\struc\utils\version.cmd /y
 IF %VERBOSE%==YES ECHO [%~n0 ] ... Files for _set created succesfully.
 CD ..
 

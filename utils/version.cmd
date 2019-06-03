@@ -28,8 +28,8 @@ SET minorversion=""
 SET patchversion=""
 SET devversion=""
 
-IF NOT EXIST "..\code\src\_version.txt" (
-   SET ERROR_MESSAGE=[ERROR] File ..\code\src\_version.txt with version parameters doesn't exist
+IF NOT EXIST "..\..\code\src\_version.txt" (
+   SET ERROR_MESSAGE=[ERROR] [%~n0 ] file ..\code\src\_version.txt with version parameters doesn't exist ...
    GOTO ERROR_EXIT_SUBSCRIPT
 )
 
@@ -38,44 +38,48 @@ IF NOT EXIST "..\code\src\_version.txt" (
 ::              https://ss64.com/nt/for_f.html
 ::
 :: Remove comment lines
-TYPE "..\code\src\_version.txt" | FINDSTR /v # >"..\_bin\version_clean.txt"
+TYPE "..\..\code\src\_version.txt" | FINDSTR /v # >"..\..\_bin\version_clean.txt"
 :: Check parameter file for unwanted characters
-FINDSTR /R "( ) & ' ` \"" "..\_bin\version_clean.txt" > NUL
+FINDSTR /R "( ) & ' ` \"" "..\..\_bin\version_clean.txt" > NUL
 IF NOT ERRORLEVEL 1 (
-	SET ERROR_MESSAGE=[ERROR] The parameter file contains unwanted characters, and cannot be parsed.
+	SET ERROR_MESSAGE=[ERROR] [%~n0 ] the parameter file contains unwanted characters, and cannot be parsed ...
 	GOTO ERROR_EXIT
 )
 :: Only parse the file if no unwanted characters were found
-FOR /F "tokens=1,2 delims==" %%A IN ('FINDSTR /R /X /C:"[^=][^=]*=.*" "..\_bin\version_clean.txt" ') DO (
+FOR /F "tokens=1,2 delims==" %%A IN ('FINDSTR /R /X /C:"[^=][^=]*=.*" "..\..\_bin\version_clean.txt" ') DO (
 	SET %%A=%%B
 )
 
 IF "%majorversion%" == "" (
-	ECHO [INFO ] The majorversion is not defined. Setting it to 0.
+	ECHO [INFO ] [%~n0 ] the majorversion is not defined. Setting it to 0 ...
 	SET majorversion=0
 )
 IF "%minorversion%" == "" (
-	ECHO [INFO ]The minorversion is not defined. Setting it to 0.
+	ECHO [INFO ] [%~n0 ] the minorversion is not defined. Setting it to 0 ...
 	SET minorversion=0
 )
 IF "%patchversion%" == "" (
-	ECHO [INFO ]The patchversion is not defined. Setting it to 0.
+	ECHO [INFO ] [%~n0 ] the patchversion is not defined. Setting it to 0 ...
 	SET patchversion=0
 )
 IF "%devversion%" == "" (
-	ECHO [INFO ]The patchversion is not defined. Setting it to 0.
-	SET patchversion=0
+	ECHO [INFO ] [%~n0 ] development version is not defined. Leaving it like that ...
 )
 
 :: Remove cleaned version file
-del "..\_bin\version_clean.txt"
+del "..\..\_bin\version_clean.txt"
 
 SET version=v%majorversion%.%minorversion%.%patchversion%.%devversion%
+IF "%devversion%" == "" (
+	SET version=v%majorversion%.%minorversion%.%patchversion%
+)
 
 GOTO CLEAN_EXIT_SUBSCRIPT
 
 :ERROR_EXIT_SUBSCRIPT
+ECHO *******************
 ECHO %ERROR_MESSAGE%
+ECHO *******************
 ::timeout /T 5
 EXIT /B 1
 

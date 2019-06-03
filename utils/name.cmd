@@ -18,7 +18,7 @@ SET extension=
 :: http://www.robvanderwoude.com/ntfor.php
 ::
 IF "%extension%"=="" (
-	CD ..
+	CD ..\..
 	FOR %%I IN (.) DO SET extension=%%~nxI
 )
 
