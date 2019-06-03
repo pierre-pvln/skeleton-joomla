@@ -60,6 +60,8 @@ ECHO *******************
 :: Wait some time and exit the script
 ::
 PAUSE
+:: Exit script file here
+GOTO:eof
 
 ::--------------------------------------------------------
 ::-- Function section starts below here
