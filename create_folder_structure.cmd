@@ -43,6 +43,9 @@ IF NOT EXIST dpl   (md dpl)
 
 IF %VERBOSE%==YES ECHO [%~n0 ] ... Creating misc	 
 IF NOT EXIST misc  (md misc)
+	CD misc
+		IF NOT EXIST original  (md original)
+	CD ..
 
 IF %VERBOSE%==YES ECHO [%~n0 ] ... Creating code
 IF NOT EXIST code   (md code)
@@ -57,6 +60,7 @@ IF NOT EXIST stg   (md stg)
 
 IF %VERBOSE%==YES ECHO [%~n0 ] ... Creating struc
 IF NOT EXIST struc (md struc)
+
 
 IF %VERBOSE%==YES ECHO [%~n0 ] ... Creating @_started_
 IF NOT EXIST @_started_*      (md @_started_%date:~9,4%_%date:~6,2%_%date:~3,2%_@)
