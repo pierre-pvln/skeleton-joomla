@@ -1,12 +1,15 @@
 :: Name:     create_mising_files.cmd
-:: Purpose:  Create the any missing default files projects folders
+:: Purpose:  Create any missing default files projects folders
 :: Author:   pierre@pvln.nl
 :: Revision: 2019 04 25 - initial version
+::           2020 03 12 - updated to new folder structure
 ::
 :: Required environment variables
 :: ==============================
 :: - VERBOSE         			  how verbose output should be if not set script sets it to YES
 :: - extensionFolderName          the name of the extension based on the top level foldername
+:: - extensionType				  the type of extension
+:: - extensionName				  the name of the extension
 
 @ECHO off
 SETLOCAL ENABLEEXTENSIONS
@@ -22,12 +25,18 @@ IF "%extensionFolderName%" == "" (
    SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... extensionFolderName environment variable not set.
    GOTO ERROR_EXIT_SUBSCRIPT
 )
+IF "%extensionName%" == "" (
+   SET extensionName=^<extensionname^>
+)
+IF "%extensionType%" == "" (
+   SET extensionType=^<extensiontype^>
+)
 
 :: Create default files
 ::
-:: ==================
-:: OUTPUT BINARIES
-:: ==================
+:: ======================
+:: OUTPUT SHARED BINARIES
+:: ======================
 IF NOT EXIST _bin (
    SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... folder _bin not found.
    GOTO ERROR_EXIT_SUBSCRIPT
@@ -42,9 +51,9 @@ IF NOT EXIST "README.md" (
 IF %VERBOSE%==YES ECHO [%~n0 ] ... Files for _bin created succesfully.
 CD ..
 
-:: ==================
-:: SETTINGS
-:: ==================
+:: ======================
+:: SHARED SETTINGS
+:: ======================
 IF NOT EXIST _set (
    SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... folder _set not found.
    GOTO ERROR_EXIT_SUBSCRIPT
@@ -59,9 +68,9 @@ IF NOT EXIST "README.md" (
 IF %VERBOSE%==YES ECHO [%~n0 ] ... Files for _set created succesfully.
 CD ..
 
-:: ==================
-:: TEMPORARY FILES
-:: ==================
+:: ======================
+:: SHARED TEMPORARY FILES
+:: ======================
 IF NOT EXIST _tmp (
    SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... folder _tmp not found.
    GOTO ERROR_EXIT_SUBSCRIPT
@@ -76,9 +85,9 @@ IF NOT EXIST "README.md" (
 IF %VERBOSE%==YES ECHO [%~n0 ] ... Files for _tmp created succesfully.
 CD ..
 
-:: ==================
+:: ======================
 :: BUILD SCRIPTS
-:: ==================
+:: ======================
 IF NOT EXIST bld (
    SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... folder bld not found.
    GOTO ERROR_EXIT_SUBSCRIPT
@@ -90,30 +99,35 @@ IF NOT EXIST "README.md" (
 	ECHO --- 		
 	ECHO Generic build scripts for Joomla! website extensions.^<br/^>
 	ECHO ^<br/^>
-	ECHO * Documentation and download extension: ^<br/^>
-	ECHO http://www.pvln.nl/build-joomla-extension ^<br/^>
+	ECHO * Documentation and download extension: http://www.pvln.nl/build-joomla-extensions^<br/^>
 	ECHO ^<br/^>
 	ECHO Below folder structure should be present on the workstation on which development is done:
-	ECHO ```
-    ECHO extensionname\00_dev_code       folder with the code for the Joomla! extension, 
-	ECHO                                which gets installed on the Joomla! website
-	ECHO             \02_build_process  folder with scripts to build the extension zipfile
-	ECHO                                and deploy it to the Joomla! webserver
-	ECHO             \04_settings       folder with settings used by scripts in 02_build_process
-	ECHO             \06_output         folder with the ouput files from the 02_build_process scripts
-	ECHO             \07_documentation  folder with documentation on the extension, the ToDo list
-	ECHO             \08_sources        folder with relevant information links and inspiration
-	ECHO                                used to create the extension
-	ECHO ```
-	ECHO The downloadable extension .zip file is available at:
-	ECHO ```
-	ECHO download.pvln.nl/joomla/^<extensiontype^>/^<extensionname^>/
-	ECHO ```
-	ECHO The downloadable extension update .xml file is available at:
-	ECHO ```
-	ECHO update.pvln.nl/joomla/^<extensiontype^>/^<extensionname^>/
-	ECHO ```
-	) >README.md
+	ECHO.
+	ECHO ``` 
+	ECHO %extensionFolderName%\code           folder with all code related items __(git managed)__
+	ECHO %extensionFolderName%\code\src       folder with the code for the Joomla! extension, which gets installed on the Joomla! website
+	ECHO %extensionFolderName%\code\doc       documentation related to the source code
+	ECHO %extensionFolderName%\code\set       specific settings for the extension
+	ECHO %extensionFolderName%\code\tst       tests for the source code
+	ECHO.			 
+	ECHO %extensionFolderName%\bld            folder with scripts to build the extension zipfile (^<- THIS CODE) __(git managed)__
+	ECHO.		 
+	ECHO %extensionFolderName%\stg            folder with scripts to stage it to the update and download webserver __(git managed)__
+	ECHO.
+	ECHO %extensionFolderName%\dpl            folder with generic deploy scripts for Joomla! website extensions __(git managed)__
+	ECHO. 
+	ECHO %extensionFolderName%\struc          scripts to create the Joomla! deployment skeleton __(git managed)__
+	ECHO.
+	ECHO %extensionFolderName%\misc           folder with relevant information links and inspiration, but not relevant for code
+	ECHO %extensionFolderName%\misc\original  if relevant the original code which is changed in \code\src
+	ECHO.
+	ECHO %extensionFolderName%\_set           folder with settings used by various scripts. Files in this folder are shared between different scripts.
+	ECHO.
+	ECHO %extensionFolderName%\_bin           folder with the output files from scripts. Files in this folder are shared between different scripts.
+	ECHO.
+	ECHO %extensionFolderName%\_tmp           Folder used to place temporary output files from scripts. Files in this folder are shared between different scripts.
+	ECHO ``` 
+    ) >README.md
 IF NOT EXIST "CHANGELOG.md" (
 	ECHO --- 
 	ECHO #  Changelog Scripts: Generic Joomla! extension build scripts
@@ -126,43 +140,57 @@ IF NOT EXIST "CHANGELOG.md" (
 IF %VERBOSE%==YES ECHO [%~n0 ] ... Files for bld created succesfully.
 CD ..
 
-:: ==================
+:: ======================
 :: DEPLOYMENT SCRIPTS
-:: ==================
+:: ======================
 IF NOT EXIST dpl (
    SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... folder dpl not found.
    GOTO ERROR_EXIT_SUBSCRIPT
 )
 CD dpl
 IF NOT EXIST "README.md" (
-	ECHO # Generic Deployment Process Scripts^<br/^>
-	ECHO ^<br/^>	
+	ECHO --- 
+	ECHO # Generic Deployment Process Scripts
+	ECHO --- 		
 	ECHO Generic deployment scripts for Joomla! website extensions.^<br/^>
 	ECHO ^<br/^>
-	ECHO * Documentation and download extension: ^<br/^>
-	ECHO http://www.pvln.nl/deploy-joomla-extensions ^<br/^>
+	ECHO * Documentation and download extension: http://www.pvln.nl/deploy-joomla-extensions^<br/^>
 	ECHO ^<br/^>
 	ECHO Below folder structure should be present on the workstation on which development is done:
-	ECHO ```
-	ECHO extensionname\00_dev_code       folder with the code for the Joomla! extension, 
-	ECHO                                which gets installed on the Joomla! website
-	ECHO             \02_build_process  folder with scripts to build the extension zipfile
-	ECHO                                and deploy it to the Joomla! webserver
-	ECHO             \04_settings       folder with settings used by scripts in 02_build_process
-	ECHO             \06_output         folder with the ouput files from the 02_build_process scripts
-	ECHO             \07_documentation  folder with documentation on the extension, the ToDo list
-	ECHO             \08_sources        folder with relevant information links and inspiration
-	ECHO                                used to create the extension
-	ECHO ```
-	ECHO ^<br/^>
+	ECHO.
+	ECHO ``` 
+	ECHO %extensionFolderName%\code           folder with all code related items __(git managed)__
+	ECHO %extensionFolderName%\code\src       folder with the code for the Joomla! extension, which gets installed on the Joomla! website
+	ECHO %extensionFolderName%\code\doc       documentation related to the source code
+	ECHO %extensionFolderName%\code\set       specific settings for the extension
+	ECHO %extensionFolderName%\code\tst       tests for the source code
+	ECHO.			 
+	ECHO %extensionFolderName%\bld            folder with scripts to build the extension zipfile (^<- THIS CODE) __(git managed)__
+	ECHO.		 
+	ECHO %extensionFolderName%\stg            folder with scripts to stage it to the update and download webserver __(git managed)__
+	ECHO.
+	ECHO %extensionFolderName%\dpl            folder with generic deploy scripts for Joomla! website extensions __(git managed)__
+	ECHO. 
+	ECHO %extensionFolderName%\struc          scripts to create the Joomla! deployment skeleton __(git managed)__
+	ECHO.
+	ECHO %extensionFolderName%\misc           folder with relevant information links and inspiration, but not relevant for code
+	ECHO %extensionFolderName%\misc\original  if relevant the original code which is changed in \code\src
+	ECHO.
+	ECHO %extensionFolderName%\_set           folder with settings used by various scripts. Files in this folder are shared between different scripts.
+	ECHO.
+	ECHO %extensionFolderName%\_bin           folder with the output files from scripts. Files in this folder are shared between different scripts.
+	ECHO.
+	ECHO %extensionFolderName%\_tmp           Folder used to place temporary output files from scripts. Files in this folder are shared between different scripts.
+	ECHO ``` 
+ 	ECHO ^<br/^>
 	ECHO The downloadable extension .zip file is available at:
 	ECHO ```
-	ECHO download.pvln.nl/joomla/^<extensiontype^>/^<extensionname^>/
+	ECHO download.pvln.nl/joomla/%extensionType%/%extensionName%/
 	ECHO ```
 	ECHO ^<br/^>
 	ECHO The downloadable extension update .xml file is available at:
 	ECHO ```
-	ECHO update.pvln.nl/joomla/^<extensiontype^>/^<extensionname^>/
+	ECHO update.pvln.nl/joomla/%extensionType%/%extensionName%/
 	ECHO ```
 	) >README.md
 IF NOT EXIST "CHANGELOG.md" (
@@ -177,9 +205,9 @@ IF NOT EXIST "CHANGELOG.md" (
 IF %VERBOSE%==YES ECHO [%~n0 ] ... Files for dpl created succesfully.
 CD ..
 
-:: ==================
+:: ======================
 :: MISCELLANEOUS
-:: ==================
+:: ======================
 IF NOT EXIST misc (
    SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... folder misc not found.
    GOTO ERROR_EXIT_SUBSCRIPT
@@ -193,9 +221,9 @@ IF NOT EXIST "README.md" (
 IF %VERBOSE%==YES ECHO [%~n0 ] ... Files for misc created succesfully.
 CD ..
 
-:: ==================
+:: ======================
 :: ACTUAL CODE
-:: ==================
+:: ======================
 IF NOT EXIST code (
    SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... folder code not found.
    GOTO ERROR_EXIT_SUBSCRIPT
@@ -288,43 +316,57 @@ CD code
 IF %VERBOSE%==YES ECHO [%~n0 ] ... Files for code created succesfully.
 CD ..
 
-:: ==================
+:: ======================
 :: STAGING SCRIPTS
-:: ==================
+:: ======================
 IF NOT EXIST stg (
    SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... folder stg not found.
    GOTO ERROR_EXIT_SUBSCRIPT
 )
 CD stg
 IF NOT EXIST "README.md" (
-	ECHO # Generic Staging Process Scripts^<br/^>
-	ECHO ^<br/^>		
-	ECHO Generic staging scripts for Joomla! website extensions.^<br/^>
+	ECHO --- 
+	ECHO # Generic Staging Process Scripts
+	ECHO --- 		
+	ECHO Generic deployment scripts for Joomla! website extensions.^<br/^>
 	ECHO ^<br/^>
-	ECHO * Documentation and download script: ^<br/^>
-	ECHO http://www.pvln.nl/stage-joomla-extensions ^<br/^>
+	ECHO * Documentation and download extension: http://www.pvln.nl/stage-joomla-extensions^<br/^>
 	ECHO ^<br/^>
 	ECHO Below folder structure should be present on the workstation on which development is done:
-	ECHO ```
-	ECHO extensionname\00_dev_code       folder with the code for the Joomla! extension, 
-	ECHO                                which gets installed on the Joomla! website
-	ECHO             \02_build_process  folder with scripts to build the extension zipfile
-	ECHO                                and deploy it to the Joomla! webserver
-	ECHO             \04_settings       folder with settings used by scripts in 02_build_process
-	ECHO             \06_output         folder with the ouput files from the 02_build_process scripts
-	ECHO             \07_documentation  folder with documentation on the extension, the ToDo list
-	ECHO             \08_sources        folder with relevant information links and inspiration
-	ECHO                                used to create the extension
-	ECHO ```
-	ECHO ^<br/^>
+	ECHO.
+	ECHO ``` 
+	ECHO %extensionFolderName%\code           folder with all code related items __(git managed)__
+	ECHO %extensionFolderName%\code\src       folder with the code for the Joomla! extension, which gets installed on the Joomla! website
+	ECHO %extensionFolderName%\code\doc       documentation related to the source code
+	ECHO %extensionFolderName%\code\set       specific settings for the extension
+	ECHO %extensionFolderName%\code\tst       tests for the source code
+	ECHO.			 
+	ECHO %extensionFolderName%\bld            folder with scripts to build the extension zipfile (^<- THIS CODE) __(git managed)__
+	ECHO.		 
+	ECHO %extensionFolderName%\stg            folder with scripts to stage it to the update and download webserver __(git managed)__
+	ECHO.
+	ECHO %extensionFolderName%\dpl            folder with generic deploy scripts for Joomla! website extensions __(git managed)__
+	ECHO. 
+	ECHO %extensionFolderName%\struc          scripts to create the Joomla! deployment skeleton __(git managed)__
+	ECHO.
+	ECHO %extensionFolderName%\misc           folder with relevant information links and inspiration, but not relevant for code
+	ECHO %extensionFolderName%\misc\original  if relevant the original code which is changed in \code\src
+	ECHO.
+	ECHO %extensionFolderName%\_set           folder with settings used by various scripts. Files in this folder are shared between different scripts.
+	ECHO.
+	ECHO %extensionFolderName%\_bin           folder with the output files from scripts. Files in this folder are shared between different scripts.
+	ECHO.
+	ECHO %extensionFolderName%\_tmp           Folder used to place temporary output files from scripts. Files in this folder are shared between different scripts.
+	ECHO ``` 
+ 	ECHO ^<br/^>
 	ECHO The downloadable extension .zip file is available at:
 	ECHO ```
-	ECHO download.pvln.nl/joomla/^<extensiontype^>/^<extensionname^>/
+	ECHO download.pvln.nl/joomla/%extensionType%/%extensionName%/
 	ECHO ```
 	ECHO ^<br/^>
 	ECHO The downloadable extension update .xml file is available at:
 	ECHO ```
-	ECHO update.pvln.nl/joomla/^<extensiontype^>/^<extensionname^>/
+	ECHO update.pvln.nl/joomla/%extensionType%/%extensionName%/
 	ECHO ```
 	) >README.md
 IF NOT EXIST "CHANGELOG.md" (
@@ -339,9 +381,9 @@ IF NOT EXIST "CHANGELOG.md" (
 IF %VERBOSE%==YES ECHO [%~n0 ] ... Files for stg created succesfully.
 CD ..
 
-:: ==================
+:: ======================
 :: STRUCTURE SCRIPTS
-:: ==================
+:: ======================
 IF NOT EXIST struc (
    SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... folder struc not found.
    GOTO ERROR_EXIT_SUBSCRIPT
