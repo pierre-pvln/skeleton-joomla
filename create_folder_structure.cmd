@@ -53,6 +53,7 @@ IF NOT EXIST code   (md code)
 		IF NOT EXIST src  (md src)
 		IF NOT EXIST doc  (md doc)
 		IF NOT EXIST tst  (md tst)
+		IF NOT EXIST set  (md set)
 	CD ..
 
 IF %VERBOSE%==YES ECHO [%~n0 ] ... Creating stg 
