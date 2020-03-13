@@ -1,5 +1,5 @@
-:: Name:     get_remote_repositiories.cmd
-:: Purpose:  Connect folder to git repository
+:: Name:     get_remote_scripts_repositiories.cmd
+:: Purpose:  Connect folders to git repository
 :: Author:   pierre@pvln.nl
 :: Revision: 2019 04 30 - initial version
 ::

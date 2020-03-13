@@ -2,6 +2,7 @@
 :: Purpose:  Create the baseline folder structure, connect to git and generate any missing files in Joomla! development directory
 :: Author:   pierre@pvln.nl
 :: Revision: 2019 04 25 - initial version
+::           2020 03 13 - folder and files structure changed
 ::
 @ECHO off
 SETLOCAL ENABLEEXTENSIONS
@@ -62,7 +63,7 @@ IF %ERRORLEVEL% NEQ 0 (
 )
 IF %VERBOSE%==YES ECHO [%~n0 ] ... Folder structure created succesfully.
 
-CALL ./struc/get_remote_repositories.cmd
+CALL ./struc/get_remote_scripts_repositories.cmd
 IF %ERRORLEVEL% NEQ 0 (
    SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... Script get_remote_repositories.cmd returned error %ERRORLEVEL%
    GOTO ERROR_EXIT
