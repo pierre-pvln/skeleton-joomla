@@ -75,7 +75,7 @@ IF %VERBOSE%==YES ECHO [%~n0 ] ... Got remote repositories succesfully.
 
 CALL %extensionFolderPath%/struc/create/missing_files.cmd
 IF %ERRORLEVEL% NEQ 0 (
-   SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... Script create_missing_files.cmd returned error %ERRORLEVEL%
+   SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... Script missing_files.cmd returned error %ERRORLEVEL%
    GOTO ERROR_EXIT
 )
 IF %VERBOSE%==YES ECHO [%~n0 ] ... Missing files created succesfully.
