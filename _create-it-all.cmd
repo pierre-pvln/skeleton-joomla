@@ -55,7 +55,7 @@ FOR %%i IN ("A=a" "B=b" "C=c" "D=d" "E=e" "F=f" "G=g" "H=h" "I=i" "J=j" "K=k" "L
 
 IF %VERBOSE%==YES ECHO [%~n0 ] ... extensionFolderName is: %extensionFolderName%
 
-CALL ./struc/create_folder_structure.cmd
+CALL ./struc/create/folder_structure.cmd
 IF %ERRORLEVEL% NEQ 0 (
    SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... Script create_folder_structure.cmd returned error %ERRORLEVEL%
    GOTO ERROR_EXIT
@@ -69,7 +69,7 @@ IF %ERRORLEVEL% NEQ 0 (
 )
 IF %VERBOSE%==YES ECHO [%~n0 ] ... Got remote repositories succesfully.
 
-CALL ./struc/create_missing_files.cmd
+CALL ./struc/create/missing_files.cmd
 IF %ERRORLEVEL% NEQ 0 (
    SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... Script create_missing_files.cmd returned error %ERRORLEVEL%
    GOTO ERROR_EXIT
