@@ -8,7 +8,7 @@
 :: Required environment variables
 :: ==============================
 :: - VERBOSE         			  how verbose output should be if not set script sets it to YES
-:: - extensionFolderName          the name of the extension based on the top level foldername
+:: - extensionFolderPath          the path to the extension based on the top level foldername
 ::
 
 @ECHO off
@@ -21,10 +21,12 @@ SETLOCAL ENABLEEXTENSIONS
 IF "%VERBOSE%" == "" (
    SET VERBOSE=YES
 )
-IF "%extensionFolderName%" == "" (
-   SET ERROR_MESSAGE=[ERROR] [%~n0 ] extensionFolderName environment variable not set ...
+IF "%extensionFolderPath%" == "" (
+   SET ERROR_MESSAGE=[ERROR] [%~n0 ] extensionFolderPath environment variable not set ...
    GOTO ERROR_EXIT_SUBSCRIPT
 )
+
+CD %extensionFolderPath%
 
 :: Create folder structure
 ::

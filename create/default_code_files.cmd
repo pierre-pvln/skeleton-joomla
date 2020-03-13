@@ -28,11 +28,11 @@ IF "%extensionFolderName%" == "" (
 :: ======================
 :: ACTUAL CODE
 :: ======================
-IF NOT EXIST code (
-   SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... folder code not found.
+IF NOT EXIST %extensionFolderPath%/code (
+   SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... folder %extensionFolderPath%/code not found.
    GOTO ERROR_EXIT_SUBSCRIPT
 )
-CD code
+CD %extensionFolderPath%/code
 	IF NOT EXIST "README.md" (
 		ECHO --- 
 		ECHO # README file for the %extensionFolderName% Joomla! extension
@@ -40,7 +40,7 @@ CD code
 	) >README.md
 	
 	IF NOT EXIST src (
-		SET ERROR_MESSAGE=[ERROR] [%~n0 ] folder code/src not found ...
+		SET ERROR_MESSAGE=[ERROR] [%~n0 ] folder %extensionFolderPath%/code/src not found ...
 		GOTO ERROR_EXIT_SUBSCRIPT
 	)
 	CD src
@@ -86,7 +86,7 @@ CD code
 	CD ..
 	
 	IF NOT EXIST doc (
-		SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... folder code/src not found.
+		SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... folder %extensionFolderPath%/code/doc not found.
 		GOTO ERROR_EXIT_SUBSCRIPT
 	)		
 	CD doc
@@ -97,7 +97,7 @@ CD code
 		) >README.md
 	CD ..
 	IF NOT EXIST tst (
-		SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... folder code/tst not found.
+		SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... folder %extensionFolderPath%/code/tst not found.
 		GOTO ERROR_EXIT_SUBSCRIPT
 	)		
 	CD tst
@@ -117,7 +117,7 @@ CD code
 		) >CHANGELOG.md
 	CD ..
 
-IF %VERBOSE%==YES ECHO [%~n0 ] ... Files for code created succesfully.
+IF %VERBOSE%==YES ECHO [%~n0 ] ... Files for %extensionFolderPath%/code created succesfully.
 CD ..
 
 GOTO CLEAN_EXIT_SUBSCRIPT

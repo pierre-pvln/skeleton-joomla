@@ -23,18 +23,18 @@ IF "%VERBOSE%" == "" (
 :: ======================
 :: SHARED SETTINGS
 :: ======================
-IF NOT EXIST _set (
-   SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... folder _set not found.
+IF NOT EXIST %extensionFolderPath%/_set (
+   SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... folder %extensionFolderPath%/_set not found.
    GOTO ERROR_EXIT_SUBSCRIPT
 )
-CD _set
+CD %extensionFolderPath%/_set
 IF NOT EXIST "README.md" (
 	ECHO --- 
 	ECHO # Used to place settings specific for the Joomla Extension.
 	ECHO # Files in this folder are shared between different scripts.
 	ECHO ---
 	) >README.md
-IF %VERBOSE%==YES ECHO [%~n0 ] ... Files for _set created succesfully.
+IF %VERBOSE%==YES ECHO [%~n0 ] ... Files for %extensionFolderPath%/_set created succesfully.
 CD ..
 
 GOTO CLEAN_EXIT_SUBSCRIPT

@@ -28,11 +28,11 @@ IF "%extensionFolderName%" == "" (
 :: ======================
 :: BUILD SCRIPTS
 :: ======================
-IF NOT EXIST bld (
-   SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... folder bld not found.
+IF NOT EXIST %extensionFolderPath%/bld (
+   SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... folder %extensionFolderPath%/bld not found.
    GOTO ERROR_EXIT_SUBSCRIPT
 )
-CD bld
+CD %extensionFolderPath%/bld
 IF NOT EXIST "README.md" (
 	ECHO --- 
 	ECHO # Generic Build Process Scripts
@@ -77,7 +77,7 @@ IF NOT EXIST "CHANGELOG.md" (
 	ECHO ^<li^>Initial version^</li^>
 	ECHO ^</ul^>
 	) >CHANGELOG.md
-IF %VERBOSE%==YES ECHO [%~n0 ] ... Files for bld created succesfully.
+IF %VERBOSE%==YES ECHO [%~n0 ] ... Files for %extensionFolderPath%/bld created succesfully.
 CD ..
 
 GOTO CLEAN_EXIT_SUBSCRIPT

@@ -28,17 +28,17 @@ IF "%extensionFolderName%" == "" (
 :: ======================
 :: MISCELLANEOUS
 :: ======================
-IF NOT EXIST misc (
-   SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... folder misc not found.
+IF NOT EXIST %extensionFolderPath%/misc (
+   SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... folder %extensionFolderPath%/misc not found.
    GOTO ERROR_EXIT_SUBSCRIPT
 )
-CD misc
+CD %extensionFolderPath%/misc
 IF NOT EXIST "README.md" (
 	ECHO --- 
 	ECHO # Folder for miscellaneous info for the %extensionFolderName% Joomla! extension.
 	ECHO ---
 	) >README.md
-IF %VERBOSE%==YES ECHO [%~n0 ] ... Files for misc created succesfully.
+IF %VERBOSE%==YES ECHO [%~n0 ] ... Files for %extensionFolderPath%/misc created succesfully.
 CD ..
 
 GOTO CLEAN_EXIT_SUBSCRIPT

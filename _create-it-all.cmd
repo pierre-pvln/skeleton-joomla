@@ -3,6 +3,7 @@
 :: Author:   pierre@pvln.nl
 :: Revision: 2019 04 25 - initial version
 ::           2020 03 13 - folder and files structure changed
+::                      - variable extensionFolderPath added
 ::
 @ECHO off
 SETLOCAL ENABLEEXTENSIONS
@@ -56,21 +57,23 @@ FOR %%i IN ("A=a" "B=b" "C=c" "D=d" "E=e" "F=f" "G=g" "H=h" "I=i" "J=j" "K=k" "L
 
 IF %VERBOSE%==YES ECHO [%~n0 ] ... extensionFolderName is: %extensionFolderName%
 
-CALL ./struc/create/folder_structure.cmd
+SET extensionFolderPath=%CD%
+
+CALL %extensionFolderPath%/struc/create/folder_structure.cmd
 IF %ERRORLEVEL% NEQ 0 (
    SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... Script create_folder_structure.cmd returned error %ERRORLEVEL%
    GOTO ERROR_EXIT
 )
 IF %VERBOSE%==YES ECHO [%~n0 ] ... Folder structure created succesfully.
 
-CALL ./struc/get_remote_scripts_repositories.cmd
+CALL %extensionFolderPath%/struc/get_remote_scripts_repositories.cmd
 IF %ERRORLEVEL% NEQ 0 (
    SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... Script get_remote_repositories.cmd returned error %ERRORLEVEL%
    GOTO ERROR_EXIT
 )
 IF %VERBOSE%==YES ECHO [%~n0 ] ... Got remote repositories succesfully.
 
-CALL ./struc/create/missing_files.cmd
+CALL %extensionFolderPath%/struc/create/missing_files.cmd
 IF %ERRORLEVEL% NEQ 0 (
    SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... Script create_missing_files.cmd returned error %ERRORLEVEL%
    GOTO ERROR_EXIT

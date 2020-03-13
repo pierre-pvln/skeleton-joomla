@@ -23,18 +23,18 @@ IF "%VERBOSE%" == "" (
 :: ======================
 :: OUTPUT SHARED BINARIES
 :: ======================
-IF NOT EXIST _bin (
-   SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... folder _bin not found.
+IF NOT EXIST %extensionFolderPath%/_bin (
+   SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... folder %extensionFolderPath%/_bin not found.
    GOTO ERROR_EXIT_SUBSCRIPT
 )
-CD _bin	 
+CD %extensionFolderPath%/_bin	 
 IF NOT EXIST "README.md" (
 	ECHO ---
 	ECHO # Used to place output binaries like zip's etc. from scripts.
 	ECHO # Files in this folder are shared between different scripts.
 	ECHO ---
 	) >README.md
-IF %VERBOSE%==YES ECHO [%~n0 ] ... Files for _bin created succesfully.
+IF %VERBOSE%==YES ECHO [%~n0 ] ... Files for %extensionFolderPath%/_bin created succesfully.
 CD ..
 
 GOTO CLEAN_EXIT_SUBSCRIPT

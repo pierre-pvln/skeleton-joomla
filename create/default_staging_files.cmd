@@ -36,11 +36,11 @@ IF "%extensionType%" == "" (
 :: ======================
 :: STAGING SCRIPTS
 :: ======================
-IF NOT EXIST stg (
-   SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... folder stg not found.
+IF NOT EXIST %extensionFolderPath%/stg (
+   SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... folder %extensionFolderPath%/stg not found.
    GOTO ERROR_EXIT_SUBSCRIPT
 )
-CD stg
+CD %extensionFolderPath%/stg
 IF NOT EXIST "README.md" (
 	ECHO --- 
 	ECHO # Generic Staging Process Scripts
@@ -95,7 +95,7 @@ IF NOT EXIST "CHANGELOG.md" (
 	ECHO ^<li^>Initial version^</li^>
 	ECHO ^</ul^>
 	) >CHANGELOG.md
-IF %VERBOSE%==YES ECHO [%~n0 ] ... Files for stg created succesfully.
+IF %VERBOSE%==YES ECHO [%~n0 ] ... Files for %extensionFolderPath%/stg created succesfully.
 CD ..
 
 GOTO CLEAN_EXIT_SUBSCRIPT

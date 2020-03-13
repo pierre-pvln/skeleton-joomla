@@ -23,18 +23,18 @@ IF "%VERBOSE%" == "" (
 :: ======================
 :: SHARED TEMPORARY FILES
 :: ======================
-IF NOT EXIST _tmp (
-   SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... folder _tmp not found.
+IF NOT EXIST %extensionFolderPath%/_tmp (
+   SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... folder %extensionFolderPath%/_tmp not found.
    GOTO ERROR_EXIT_SUBSCRIPT
 )
-CD _tmp
+CD %extensionFolderPath%/_tmp
 IF NOT EXIST "README.md" (
 	ECHO --- 
 	ECHO # Used to place temporary output files from scripts.
 	ECHO # Folder is shared between different scripts.
 	ECHO ---
 	) >README.md
-IF %VERBOSE%==YES ECHO [%~n0 ] ... Files for _tmp created succesfully.
+IF %VERBOSE%==YES ECHO [%~n0 ] ... Files for %extensionFolderPath%/_tmp created succesfully.
 CD ..
 
 GOTO CLEAN_EXIT_SUBSCRIPT

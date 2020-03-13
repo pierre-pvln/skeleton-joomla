@@ -23,11 +23,11 @@ IF "%VERBOSE%" == "" (
 :: ======================
 :: STRUCTURE SCRIPTS
 :: ======================
-IF NOT EXIST struc (
-   SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... folder struc not found.
+IF NOT EXIST %extensionFolderPath%/struc (
+   SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... folder %extensionFolderPath%/struc not found.
    GOTO ERROR_EXIT_SUBSCRIPT
 )
-CD struc
+CD %extensionFolderPath%/struc
 IF NOT EXIST "README.md" (
 	ECHO --- 
 	ECHO # Scripts to create the default local Joomla! development environment
@@ -42,7 +42,7 @@ IF NOT EXIST "CHANGELOG.md" (
 	ECHO ^<li^>Initial version^</li^>
 	ECHO ^</ul^>
 	) >CHANGELOG.md
-IF %VERBOSE%==YES ECHO [%~n0 ] ... Files for struc created succesfully.
+IF %VERBOSE%==YES ECHO [%~n0 ] ... Files for %extensionFolderPath%/struc created succesfully.
 CD ..
 
 GOTO CLEAN_EXIT_SUBSCRIPT
