@@ -2,6 +2,7 @@
 :: Purpose:  Create the baseline folder structure for development projects
 :: Author:   pierre@pvln.nl
 :: Revision: 2019 04 25 - initial version
+::           2020 03 13 - set subfolder added 
 ::
 :: Required environment variables
 :: ==============================
