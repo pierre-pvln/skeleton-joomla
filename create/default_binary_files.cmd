@@ -27,6 +27,8 @@ IF "%extensionFolderPath" == "" (
 :: ======================
 :: OUTPUT SHARED BINARIES
 :: ======================
+IF %VERBOSE%==YES ECHO [%~n0 ] ... Start creating files for %extensionFolderPath%/_bin.
+
 IF NOT EXIST %extensionFolderPath%/_bin (
    SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... folder %extensionFolderPath%/_bin not found.
    GOTO ERROR_EXIT_SUBSCRIPT

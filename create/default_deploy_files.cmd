@@ -36,6 +36,8 @@ IF "%extensionType%" == "" (
 :: ======================
 :: DEPLOYMENT SCRIPTS
 :: ======================
+IF %VERBOSE%==YES ECHO [%~n0 ] ... Start creating files for %extensionFolderPath%/dpl.
+
 IF NOT EXIST %extensionFolderPath%/dpl (
    SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... folder %extensionFolderPath%/dpl not found.
    GOTO ERROR_EXIT_SUBSCRIPT
@@ -58,13 +60,13 @@ IF NOT EXIST "README.md" (
 	ECHO %extensionFolderName%\code\set       specific settings for the extension
 	ECHO %extensionFolderName%\code\tst       tests for the source code
 	ECHO.			 
-	ECHO %extensionFolderName%\bld            folder with scripts to build the extension zipfile (^<- THIS CODE) __(git managed)__
+	ECHO %extensionFolderName%\bld            folder with scripts to build the extension zipfile ^<- THIS CODE __git managed__
 	ECHO.		 
-	ECHO %extensionFolderName%\stg            folder with scripts to stage it to the update and download webserver __(git managed)__
+	ECHO %extensionFolderName%\stg            folder with scripts to stage it to the update and download webserver __git managed__
 	ECHO.
-	ECHO %extensionFolderName%\dpl            folder with generic deploy scripts for Joomla! website extensions __(git managed)__
+	ECHO %extensionFolderName%\dpl            folder with generic deploy scripts for Joomla! website extensions ^<- THIS CODE __git managed__
 	ECHO. 
-	ECHO %extensionFolderName%\struc          scripts to create the Joomla! deployment skeleton __(git managed)__
+	ECHO %extensionFolderName%\struc          scripts to create the Joomla! deployment skeleton __git managed__
 	ECHO.
 	ECHO %extensionFolderName%\misc           folder with relevant information links and inspiration, but not relevant for code
 	ECHO %extensionFolderName%\misc\original  if relevant the original code which is changed in \code\src

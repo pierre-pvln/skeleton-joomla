@@ -23,6 +23,8 @@ IF "%VERBOSE%" == "" (
 :: ======================
 :: STRUCTURE SCRIPTS
 :: ======================
+IF %VERBOSE%==YES ECHO [%~n0 ] ... Start creating files for %extensionFolderPath%/struc.
+
 IF NOT EXIST %extensionFolderPath%/struc (
    SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... folder %extensionFolderPath%/struc not found.
    GOTO ERROR_EXIT_SUBSCRIPT

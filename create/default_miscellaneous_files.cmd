@@ -28,6 +28,8 @@ IF "%extensionFolderName%" == "" (
 :: ======================
 :: MISCELLANEOUS
 :: ======================
+IF %VERBOSE%==YES ECHO [%~n0 ] ... Start creating files for %extensionFolderPath%/misc.
+
 IF NOT EXIST %extensionFolderPath%/misc (
    SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... folder %extensionFolderPath%/misc not found.
    GOTO ERROR_EXIT_SUBSCRIPT

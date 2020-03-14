@@ -28,6 +28,8 @@ IF "%extensionFolderName%" == "" (
 :: ======================
 :: BUILD SCRIPTS
 :: ======================
+IF %VERBOSE%==YES ECHO [%~n0 ] ... Start creating files for %extensionFolderPath%/bld.
+
 IF NOT EXIST %extensionFolderPath%/bld (
    SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... folder %extensionFolderPath%/bld not found.
    GOTO ERROR_EXIT_SUBSCRIPT
@@ -44,19 +46,19 @@ IF NOT EXIST "README.md" (
 	ECHO Below folder structure should be present on the workstation on which development is done:
 	ECHO.
 	ECHO ``` 
-	ECHO %extensionFolderName%\code           folder with all code related items __(git managed)__
+	ECHO %extensionFolderName%\code           folder with all code related items __git managed__
 	ECHO %extensionFolderName%\code\src       folder with the code for the Joomla! extension, which gets installed on the Joomla! website
 	ECHO %extensionFolderName%\code\doc       documentation related to the source code
 	ECHO %extensionFolderName%\code\set       specific settings for the extension
 	ECHO %extensionFolderName%\code\tst       tests for the source code
 	ECHO.			 
-	ECHO %extensionFolderName%\bld            folder with scripts to build the extension zipfile (^<- THIS CODE) __(git managed)__
+	ECHO %extensionFolderName%\bld            folder with scripts to build the extension zipfile ^<- THIS CODE __git managed__
 	ECHO.		 
-	ECHO %extensionFolderName%\stg            folder with scripts to stage it to the update and download webserver __(git managed)__
+	ECHO %extensionFolderName%\stg            folder with scripts to stage it to the update and download webserver __git managed__
 	ECHO.
-	ECHO %extensionFolderName%\dpl            folder with generic deploy scripts for Joomla! website extensions __(git managed)__
+	ECHO %extensionFolderName%\dpl            folder with generic deploy scripts for Joomla! website extensions __git managed__
 	ECHO. 
-	ECHO %extensionFolderName%\struc          scripts to create the Joomla! deployment skeleton __(git managed)__
+	ECHO %extensionFolderName%\struc          scripts to create the Joomla! deployment skeleton __git managed__
 	ECHO.
 	ECHO %extensionFolderName%\misc           folder with relevant information links and inspiration, but not relevant for code
 	ECHO %extensionFolderName%\misc\original  if relevant the original code which is changed in \code\src

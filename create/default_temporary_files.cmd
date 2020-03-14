@@ -23,6 +23,8 @@ IF "%VERBOSE%" == "" (
 :: ======================
 :: SHARED TEMPORARY FILES
 :: ======================
+IF %VERBOSE%==YES ECHO [%~n0 ] ... Start creating files for %extensionFolderPath%/_tmp.
+
 IF NOT EXIST %extensionFolderPath%/_tmp (
    SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... folder %extensionFolderPath%/_tmp not found.
    GOTO ERROR_EXIT_SUBSCRIPT

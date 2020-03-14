@@ -23,6 +23,8 @@ IF "%VERBOSE%" == "" (
 :: ======================
 :: SHARED SETTINGS
 :: ======================
+IF %VERBOSE%==YES ECHO [%~n0 ] ... Start creating files for %extensionFolderPath%/_set.
+
 IF NOT EXIST %extensionFolderPath%/_set (
    SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... folder %extensionFolderPath%/_set not found.
    GOTO ERROR_EXIT_SUBSCRIPT
