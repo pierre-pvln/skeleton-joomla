@@ -8,6 +8,13 @@
 @ECHO off
 SETLOCAL ENABLEEXTENSIONS
 
+pause
+cd
+pause
+set
+pause
+
+
 :: Create default files
 ::
 CALL ./default_binary_files.cmd

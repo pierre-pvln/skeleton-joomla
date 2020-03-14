@@ -18,6 +18,12 @@ IF "%VERBOSE%" == "" (
    SET VERBOSE=YES
 )
 
+pause
+cd
+pause
+set
+pause
+
 :: Create default files
 ::
 :: ======================
