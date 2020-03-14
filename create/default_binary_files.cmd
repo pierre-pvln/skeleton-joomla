@@ -17,6 +17,10 @@ SETLOCAL ENABLEEXTENSIONS
 IF "%VERBOSE%" == "" (
    SET VERBOSE=YES
 )
+IF "%extensionFolderPath" == "" (
+   SET ERROR_MESSAGE=[ERROR] [%~n0 ] extensionFolderPath environment variable not set ...
+   GOTO ERROR_EXIT_SUBSCRIPT
+)
 
 pause
 cd
@@ -41,7 +45,6 @@ IF NOT EXIST "README.md" (
 	ECHO ---
 	) >README.md
 IF %VERBOSE%==YES ECHO [%~n0 ] ... Files for %extensionFolderPath%/_bin created succesfully.
-CD ..
 
 GOTO CLEAN_EXIT_SUBSCRIPT
 
