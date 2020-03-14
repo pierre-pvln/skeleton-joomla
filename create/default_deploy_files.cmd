@@ -96,7 +96,6 @@ IF NOT EXIST "CHANGELOG.md" (
 	ECHO ^</ul^>
 	) >CHANGELOG.md
 IF %VERBOSE%==YES ECHO [%~n0 ] ... Files for %extensionFolderPath%/dpl created succesfully.
-CD ..
 
 GOTO CLEAN_EXIT_SUBSCRIPT
 

@@ -22,12 +22,6 @@ IF "%extensionFolderPath" == "" (
    GOTO ERROR_EXIT_SUBSCRIPT
 )
 
-pause
-cd
-pause
-set
-pause
-
 :: Create default files
 ::
 :: ======================

@@ -96,6 +96,7 @@ CD %extensionFolderPath%/code
 			ECHO --- 
 		) >README.md
 	CD ..
+
 	IF NOT EXIST tst (
 		SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... folder %extensionFolderPath%/code/tst not found.
 		GOTO ERROR_EXIT_SUBSCRIPT
@@ -116,9 +117,7 @@ CD %extensionFolderPath%/code
 			ECHO ^</ul^>
 		) >CHANGELOG.md
 	CD ..
-
 IF %VERBOSE%==YES ECHO [%~n0 ] ... Files for %extensionFolderPath%/code created succesfully.
-CD ..
 
 GOTO CLEAN_EXIT_SUBSCRIPT
 

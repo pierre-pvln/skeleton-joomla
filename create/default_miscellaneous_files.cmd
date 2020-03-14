@@ -39,7 +39,6 @@ IF NOT EXIST "README.md" (
 	ECHO ---
 	) >README.md
 IF %VERBOSE%==YES ECHO [%~n0 ] ... Files for %extensionFolderPath%/misc created succesfully.
-CD ..
 
 GOTO CLEAN_EXIT_SUBSCRIPT
 
