@@ -22,21 +22,21 @@ IF %ERRORLEVEL% NEQ 0 (
    GOTO ERROR_EXIT_SUBSCRIPT
 )
 
-CALL %extensionFolderPath%/struc/create/temporary_settings_files.cmd
+CALL %extensionFolderPath%/struc/create/default_temporary_files.cmd
 IF %ERRORLEVEL% NEQ 0 (
-   SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... Script temporary_settings_files.cmd returned error %ERRORLEVEL%
+   SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... Script default_temporary_files.cmd returned error %ERRORLEVEL%
    GOTO ERROR_EXIT_SUBSCRIPT
 )
 
-CALL %extensionFolderPath%/struc/create/build_settings_files.cmd
+CALL %extensionFolderPath%/struc/create/default_build_files.cmd
 IF %ERRORLEVEL% NEQ 0 (
-   SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... Script build_settings_files.cmd returned error %ERRORLEVEL%
+   SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... Script default_build_files.cmd returned error %ERRORLEVEL%
    GOTO ERROR_EXIT_SUBSCRIPT
 )
 
-CALL %extensionFolderPath%/struc/create/deploy_settings_files.cmd
+CALL %extensionFolderPath%/struc/create/default_deploy_files.cmd
 IF %ERRORLEVEL% NEQ 0 (
-   SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... Script deploy_settings_files.cmd returned error %ERRORLEVEL%
+   SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... Script default_deploy_files.cmd returned error %ERRORLEVEL%
    GOTO ERROR_EXIT_SUBSCRIPT
 )
 
@@ -46,21 +46,21 @@ IF %ERRORLEVEL% NEQ 0 (
    GOTO ERROR_EXIT_SUBSCRIPT
 )
 
-CALL %extensionFolderPath%/struc/create/code_settings_files.cmd
+CALL %extensionFolderPath%/struc/create/default_code_files.cmd
 IF %ERRORLEVEL% NEQ 0 (
-   SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... Script code_settings_files.cmd returned error %ERRORLEVEL%
+   SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... Script default_code_files.cmd returned error %ERRORLEVEL%
    GOTO ERROR_EXIT_SUBSCRIPT
 )
 
-CALL %extensionFolderPath%/struc/create/staging_settings_files.cmd
+CALL %extensionFolderPath%/struc/create/default_staging_files.cmd
 IF %ERRORLEVEL% NEQ 0 (
-   SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... Script staging_settings_files.cmd returned error %ERRORLEVEL%
+   SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... Script default_staging_files.cmd returned error %ERRORLEVEL%
    GOTO ERROR_EXIT_SUBSCRIPT
 )
 
-CALL %extensionFolderPath%/struc/create/structure_settings_files.cmd
+CALL %extensionFolderPath%/struc/create/default_structure_files.cmd
 IF %ERRORLEVEL% NEQ 0 (
-   SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... Script structure_settings_files.cmd returned error %ERRORLEVEL%
+   SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... Script default_structure_files.cmd returned error %ERRORLEVEL%
    GOTO ERROR_EXIT_SUBSCRIPT
 )
 
