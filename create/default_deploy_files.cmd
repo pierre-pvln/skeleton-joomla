@@ -54,7 +54,7 @@ IF NOT EXIST "README.md" (
 	ECHO Below folder structure should be present on the workstation on which development is done:
 	ECHO.
 	ECHO ``` 
-	ECHO %extensionFolderName%\code           folder with all code related items __(git managed)__
+	ECHO %extensionFolderName%\code           folder with all code related items __git managed__
 	ECHO %extensionFolderName%\code\src       folder with the code for the Joomla! extension, which gets installed on the Joomla! website
 	ECHO %extensionFolderName%\code\doc       documentation related to the source code
 	ECHO %extensionFolderName%\code\set       specific settings for the extension
