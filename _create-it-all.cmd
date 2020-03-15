@@ -62,24 +62,32 @@ IF %VERBOSE%==YES ECHO [%~n0 ] ... extensionFolderPath is: %extensionFolderPath%
 
 CALL %extensionFolderPath%/struc/create/folder_structure.cmd
 IF %ERRORLEVEL% NEQ 0 (
-   SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... Script create_folder_structure.cmd returned error %ERRORLEVEL%
+   SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... Script %extensionFolderPath%/struc/create/folder_structure.cmd returned error %ERRORLEVEL%
    GOTO ERROR_EXIT
 )
 IF %VERBOSE%==YES ECHO [%~n0 ] ... Folder structure created succesfully.
 
 CALL %extensionFolderPath%/struc/get_remote_scripts_repositories.cmd
 IF %ERRORLEVEL% NEQ 0 (
-   SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... Script get_remote_repositories.cmd returned error %ERRORLEVEL%
+   SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... Script %extensionFolderPath%/struc/get_remote_scripts_repositories.cmd returned error %ERRORLEVEL%
    GOTO ERROR_EXIT
 )
 IF %VERBOSE%==YES ECHO [%~n0 ] ... Got remote repositories succesfully.
 
 CALL %extensionFolderPath%/struc/create/missing_files.cmd
 IF %ERRORLEVEL% NEQ 0 (
-   SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... Script missing_files.cmd returned error %ERRORLEVEL%
+   SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... Script %extensionFolderPath%/struc/create/missing_files.cmd returned error %ERRORLEVEL%
    GOTO ERROR_EXIT
 )
 IF %VERBOSE%==YES ECHO [%~n0 ] ... Missing files created succesfully.
+
+CALL %extensionFolderPath%/struc/create/github_repository.cmd
+IF %ERRORLEVEL% NEQ 0 (
+   SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... Script %extensionFolderPath%/struc/create/github_repository.cmd returned error %ERRORLEVEL%
+   GOTO ERROR_EXIT
+)
+IF %VERBOSE%==YES ECHO [%~n0 ] ... Missing files created succesfully.
+
 
 GOTO CLEAN_EXIT
 
