@@ -86,16 +86,13 @@ IF %ERRORLEVEL% NEQ 0 (
    SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... Script %extensionFolderPath%/struc/create/github_repository.cmd returned error %ERRORLEVEL%
    GOTO ERROR_EXIT
 )
-IF %VERBOSE%==YES ECHO [%~n0 ] ... Missing files created succesfully.
-
+IF %VERBOSE%==YES ECHO [%~n0 ] ... New gitgub repository created succesfully.
 
 GOTO CLEAN_EXIT
 
 :ERROR_EXIT
 cd "%cmd_dir%" 
-ECHO *******************
 ECHO %ERROR_MESSAGE%
-ECHO *******************
    
 :CLEAN_EXIT
 :: Wait some time and exit the script
