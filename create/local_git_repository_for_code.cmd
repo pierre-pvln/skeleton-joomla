@@ -1,4 +1,4 @@
-SET extensionfoldername=ipheiongraphs
+SET extensionfoldername=ipheionsites
 
 cd ..\..\code
 
