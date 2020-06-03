@@ -55,7 +55,7 @@ CD %extensionFolderPath%/code
 		IF NOT EXIST "README.md" (
 			ECHO --- 
 			ECHO README.md in /code/src 
-			ECHO # README file for the actual code 
+			ECHO # README file for the actual %extensionFolderName% code 
 			ECHO --- 
 		) >README.md
 		IF NOT EXIST "CHANGELOG.md" (
@@ -118,7 +118,7 @@ CD %extensionFolderPath%/code
 		IF NOT EXIST "README.md" (
 			ECHO --- 
 			ECHO README.md in /code/tst 
-			ECHO # Folder with testing scripts for source code
+			ECHO # Folder with testing scripts for %extensionFolderName% source code
 			ECHO --- 
 		) >README.md
 		IF NOT EXIST "CHANGELOG.md" (
