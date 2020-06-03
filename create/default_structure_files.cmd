@@ -32,6 +32,7 @@ IF NOT EXIST %extensionFolderPath%/struc (
 CD %extensionFolderPath%/struc
 IF NOT EXIST "README.md" (
 	ECHO --- 
+	ECHO README.md in /struc 
 	ECHO # Scripts to create the default local Joomla! development environment
 	ECHO --- 
 	) >README.md

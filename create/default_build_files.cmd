@@ -37,6 +37,7 @@ IF NOT EXIST %extensionFolderPath%/bld (
 CD %extensionFolderPath%/bld
 IF NOT EXIST "README.md" (
 	ECHO --- 
+	ECHO README.md in /bld 
 	ECHO # Generic Build Process Scripts
 	ECHO --- 		
 	ECHO Generic build scripts for Joomla! website extensions.^<br/^>

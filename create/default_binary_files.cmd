@@ -36,8 +36,9 @@ IF NOT EXIST %extensionFolderPath%/_bin (
 CD %extensionFolderPath%/_bin	 
 IF NOT EXIST "README.md" (
 	ECHO ---
+	ECHO README.md in /_bin 
 	ECHO # Used to place output binaries like zip's etc. from scripts.
-	ECHO # Files in this folder are shared between different scripts.
+	ECHO Files in this folder are shared between different scripts.
 	ECHO ---
 	) >README.md
 IF %VERBOSE%==YES ECHO [%~n0 ] ... Files for %extensionFolderPath%/_bin created succesfully.

@@ -32,8 +32,9 @@ IF NOT EXIST %extensionFolderPath%/_set (
 CD %extensionFolderPath%/_set
 IF NOT EXIST "README.md" (
 	ECHO --- 
+	ECHO README.md in /_set 
 	ECHO # Used to place settings specific for the Joomla Extension.
-	ECHO # Files in this folder are shared between different scripts.
+	ECHO Files in this folder are shared between different scripts.
 	ECHO ---
 	) >README.md
 IF %VERBOSE%==YES ECHO [%~n0 ] ... Files for %extensionFolderPath%/_set created succesfully.

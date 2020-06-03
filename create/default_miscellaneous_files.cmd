@@ -37,6 +37,7 @@ IF NOT EXIST %extensionFolderPath%/misc (
 CD %extensionFolderPath%/misc
 IF NOT EXIST "README.md" (
 	ECHO --- 
+	ECHO README.md in /misc 
 	ECHO # Folder for miscellaneous info for the %extensionFolderName% Joomla! extension.
 	ECHO ---
 	) >README.md

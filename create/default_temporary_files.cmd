@@ -31,9 +31,10 @@ IF NOT EXIST %extensionFolderPath%/_tmp (
 )
 CD %extensionFolderPath%/_tmp
 IF NOT EXIST "README.md" (
-	ECHO --- 
+	ECHO ---
+	ECHO README.md in /_tmp 	
 	ECHO # Used to place temporary output files from scripts.
-	ECHO # Folder is shared between different scripts.
+	ECHO Folder is shared between different scripts.
 	ECHO ---
 	) >README.md
 IF %VERBOSE%==YES ECHO [%~n0 ] ... Files for %extensionFolderPath%/_tmp created succesfully.

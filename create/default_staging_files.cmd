@@ -45,6 +45,7 @@ IF NOT EXIST %extensionFolderPath%/stg (
 CD %extensionFolderPath%/stg
 IF NOT EXIST "README.md" (
 	ECHO --- 
+	ECHO README.md in /stg 
 	ECHO # Generic Staging Process Scripts
 	ECHO --- 		
 	ECHO Generic deployment scripts for Joomla! website extensions.^<br/^>

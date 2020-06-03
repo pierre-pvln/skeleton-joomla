@@ -45,6 +45,7 @@ IF NOT EXIST %extensionFolderPath%/dpl (
 CD %extensionFolderPath%/dpl
 IF NOT EXIST "README.md" (
 	ECHO --- 
+	ECHO README.md in /dpl 
 	ECHO # Generic Deployment Process Scripts
 	ECHO --- 		
 	ECHO Generic deployment scripts for Joomla! website extensions.^<br/^>

@@ -37,6 +37,7 @@ IF NOT EXIST %extensionFolderPath%/code (
 CD %extensionFolderPath%/code
 	IF NOT EXIST "README.md" (
 		ECHO --- 
+		ECHO README.md in /code 
 		ECHO # README file for the %extensionFolderName% Joomla! extension
 		ECHO --- 
 	) >README.md
@@ -48,6 +49,7 @@ CD %extensionFolderPath%/code
 	CD src
 		IF NOT EXIST "README.md" (
 			ECHO --- 
+			ECHO README.md in /code/src 
 			ECHO # README file for the actual code 
 			ECHO --- 
 		) >README.md
@@ -94,6 +96,7 @@ CD %extensionFolderPath%/code
 	CD doc
 		IF NOT EXIST "README.md" (
 			ECHO --- 
+			ECHO README.md in /code/doc 
 			ECHO # Folder with additional documentation for %extensionFolderName% extension
 			ECHO --- 
 		) >README.md
@@ -106,6 +109,7 @@ CD %extensionFolderPath%/code
 	CD tst
 		IF NOT EXIST "README.md" (
 			ECHO --- 
+			ECHO README.md in /code/tst 
 			ECHO # Folder with testing scripts for source code
 			ECHO --- 
 		) >README.md
