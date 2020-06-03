@@ -81,11 +81,14 @@ CD %extensionFolderPath%/code
 			ECHO # 
 			ECHO # Patch releases indicate that bugs have been fixed.
 			ECHO # 
+			ECHO # Dev releases indicate work in progress.
+			ECHO # 
 			ECHO # Changes should be commented in CHANGELOG.md
 			ECHO #
 			ECHO majorversion=0
 			ECHO minorversion=0
 			ECHO patchversion=1
+			ECHO devversion=1
 		) >_version.txt
 	CD ..
 	

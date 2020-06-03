@@ -35,6 +35,52 @@ IF NOT EXIST "README.md" (
 	ECHO README.md in /struc 
 	ECHO # Scripts to create the default local Joomla! development environment
 	ECHO --- 
+	ECHO Generic scripts to create the default local Joomla! development environment for Joomla! website extensions.^<br/^>
+	ECHO ^<br/^>
+	ECHO * Documentation and download extension: http://www.pvln.nl/deploy-joomla-extensions^<br/^>
+	ECHO ^<br/^>
+	ECHO Below folder structure should be present on the workstation on which development is done:^<br/^>
+	ECHO.
+	ECHO __Managed using git__
+	ECHO ``` 
+	ECHO ^<extensionname^>\code           folder with all code related items
+	ECHO ^<extensionname^>\code\src       folder with the code for the Joomla! extension, which gets installed on the Joomla! website
+	ECHO ^<extensionname^>\code\doc       documentation related to the source code
+	ECHO ^<extensionname^>\code\set       specific settings for the extension
+	ECHO ^<extensionname^>\code\tst       tests for the source code
+	ECHO.			 
+	ECHO ^<extensionname^>\bld            folder with scripts to build the extension zipfile
+	ECHO.		 
+	ECHO ^<extensionname^>\stg            folder with scripts to stage it to the update and download webserver ^<- THIS CODE
+	ECHO.
+	ECHO ^<extensionname^>\dpl            folder with generic deploy scripts for Joomla! website extensions
+	ECHO. 
+	ECHO ^<extensionname^>\struc          scripts to create the Joomla! deployment skeleton
+	ECHO ```
+	ECHO.
+	ECHO ^<br/^>
+	ECHO.
+    ECHO __Not managed, only present at development workstation__
+    ECHO ```
+	ECHO ^<extensionname^>\misc           folder with relevant information links and inspiration, but not relevant for code
+	ECHO ^<extensionname^>\misc\original  if relevant the original code which is changed in \code\src
+	ECHO.
+	ECHO ^<extensionname^>\_set           folder with settings used by various scripts. Files in this folder are shared between different scripts.
+	ECHO.
+	ECHO ^<extensionname^>\_bin           folder with the output files from scripts. Files in this folder are shared between different scripts.
+	ECHO.
+	ECHO ^<extensionname^>\_tmp           Folder used to place temporary output files from scripts. Files in this folder are shared between different scripts.
+	ECHO ``` 
+ 	ECHO ^<br/^>
+	ECHO The downloadable extension .zip file is available at:
+	ECHO ```
+	ECHO download.pvln.nl/joomla/^<extensiontype^>/^<extensionname^>/
+	ECHO ```
+	ECHO ^<br/^>
+	ECHO The downloadable extension update .xml file is available at:
+	ECHO ```
+	ECHO update.pvln.nl/joomla/^<extensiontype^>/^<extensionname^>/
+	ECHO ```	
 	) >README.md
 IF NOT EXIST "CHANGELOG.md" (
 	ECHO --- 

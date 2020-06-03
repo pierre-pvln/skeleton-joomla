@@ -52,41 +52,47 @@ IF NOT EXIST "README.md" (
 	ECHO ^<br/^>
 	ECHO * Documentation and download extension: http://www.pvln.nl/deploy-joomla-extensions^<br/^>
 	ECHO ^<br/^>
-	ECHO Below folder structure should be present on the workstation on which development is done:
+	ECHO Below folder structure should be present on the workstation on which development is done:^<br/^>
 	ECHO.
+	ECHO __Managed using git__
 	ECHO ``` 
-	ECHO %extensionFolderName%\code           folder with all code related items __git managed__
-	ECHO %extensionFolderName%\code\src       folder with the code for the Joomla! extension, which gets installed on the Joomla! website
-	ECHO %extensionFolderName%\code\doc       documentation related to the source code
-	ECHO %extensionFolderName%\code\set       specific settings for the extension
-	ECHO %extensionFolderName%\code\tst       tests for the source code
+	ECHO ^<extensionname^>\code           folder with all code related items
+	ECHO ^<extensionname^>\code\src       folder with the code for the Joomla! extension, which gets installed on the Joomla! website
+	ECHO ^<extensionname^>\code\doc       documentation related to the source code
+	ECHO ^<extensionname^>\code\set       specific settings for the extension
+	ECHO ^<extensionname^>\code\tst       tests for the source code
 	ECHO.			 
-	ECHO %extensionFolderName%\bld            folder with scripts to build the extension zipfile ^<- THIS CODE __git managed__
+	ECHO ^<extensionname^>\bld            folder with scripts to build the extension zipfile
 	ECHO.		 
-	ECHO %extensionFolderName%\stg            folder with scripts to stage it to the update and download webserver __git managed__
+	ECHO ^<extensionname^>\stg            folder with scripts to stage it to the update and download webserver ^<- THIS CODE
 	ECHO.
-	ECHO %extensionFolderName%\dpl            folder with generic deploy scripts for Joomla! website extensions ^<- THIS CODE __git managed__
+	ECHO ^<extensionname^>\dpl            folder with generic deploy scripts for Joomla! website extensions
 	ECHO. 
-	ECHO %extensionFolderName%\struc          scripts to create the Joomla! deployment skeleton __git managed__
+	ECHO ^<extensionname^>\struc          scripts to create the Joomla! deployment skeleton
+	ECHO ```
 	ECHO.
-	ECHO %extensionFolderName%\misc           folder with relevant information links and inspiration, but not relevant for code
-	ECHO %extensionFolderName%\misc\original  if relevant the original code which is changed in \code\src
+	ECHO ^<br/^>
 	ECHO.
-	ECHO %extensionFolderName%\_set           folder with settings used by various scripts. Files in this folder are shared between different scripts.
+    ECHO __Not managed, only present at development workstation__
+    ECHO ```
+	ECHO ^<extensionname^>\misc           folder with relevant information links and inspiration, but not relevant for code
+	ECHO ^<extensionname^>\misc\original  if relevant the original code which is changed in \code\src
 	ECHO.
-	ECHO %extensionFolderName%\_bin           folder with the output files from scripts. Files in this folder are shared between different scripts.
+	ECHO ^<extensionname^>\_set           folder with settings used by various scripts. Files in this folder are shared between different scripts.
 	ECHO.
-	ECHO %extensionFolderName%\_tmp           Folder used to place temporary output files from scripts. Files in this folder are shared between different scripts.
+	ECHO ^<extensionname^>\_bin           folder with the output files from scripts. Files in this folder are shared between different scripts.
+	ECHO.
+	ECHO ^<extensionname^>\_tmp           Folder used to place temporary output files from scripts. Files in this folder are shared between different scripts.
 	ECHO ``` 
  	ECHO ^<br/^>
 	ECHO The downloadable extension .zip file is available at:
 	ECHO ```
-	ECHO download.pvln.nl/joomla/%extensionType%/%extensionName%/
+	ECHO download.pvln.nl/joomla/^<extensiontype^>/^<extensionname^>/
 	ECHO ```
 	ECHO ^<br/^>
 	ECHO The downloadable extension update .xml file is available at:
 	ECHO ```
-	ECHO update.pvln.nl/joomla/%extensionType%/%extensionName%/
+	ECHO update.pvln.nl/joomla/^<extensiontype^>/^<extensionname^>/
 	ECHO ```
 	) >README.md
 IF NOT EXIST "CHANGELOG.md" (

@@ -92,7 +92,7 @@ IF %ERRORLEVEL% NEQ 0 (
 		SET ERROR_MESSAGE=[ERROR] [%~n0 ] Remote repository git@github.com:%git_username%/%remote_git_repository%.git not found ...
 		GOTO ERROR_EXIT_SUBSCRIPT
    )
-   git config --local user.name "Pierre Veelen"
+   git config --local user.name "Pierre Veelen (%extensionFolderName%)"
    git config --local user.email pierre@pvln.nl
    git config --local color.ui auto
 )
