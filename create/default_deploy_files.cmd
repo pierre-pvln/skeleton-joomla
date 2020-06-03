@@ -20,8 +20,8 @@ SETLOCAL ENABLEEXTENSIONS
 IF "%VERBOSE%" == "" (
    SET VERBOSE=YES
 )
-IF "%extensionFolderName%" == "" (
-   SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... extensionFolderName environment variable not set.
+IF "%extensionFolderPath%" == "" (
+   SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... extensionFolderPath environment variable not set.
    GOTO ERROR_EXIT_SUBSCRIPT
 )
 IF "%extensionName%" == "" (

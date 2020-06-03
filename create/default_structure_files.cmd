@@ -17,6 +17,10 @@ SETLOCAL ENABLEEXTENSIONS
 IF "%VERBOSE%" == "" (
    SET VERBOSE=YES
 )
+IF "%extensionFolderPath%" == "" (
+   SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... extensionFolderPath environment variable not set.
+   GOTO ERROR_EXIT_SUBSCRIPT
+)
 
 :: Create default files
 ::

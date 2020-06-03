@@ -1,0 +1,26 @@
+# Name:          _version.txt
+# Purpose:       set the versioning elements to a value
+# Author:        pierre@pvln.nl
+#
+# For extension: stage-joomla
+#
+# Using Semantic Versioning 2.0.0 
+# Major.Minor.[patch]
+#
+# In summary:
+# Major releases indicate a break in backward compatibility.
+# - change of folder structure
+# - change of file name of generic files
+#
+# Minor releases indicate the addition of new features or a significant change to existing features.
+# 
+# Patch releases indicate that bugs have been fixed.
+# 
+# devversion only used during development. Should be left empty in final production versioning
+#
+# Changes should be commented in CHANGELOG.md
+#
+majorversion=0
+minorversion=0
+patchversion=3
+devversion=0

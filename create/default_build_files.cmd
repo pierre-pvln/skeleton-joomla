@@ -7,6 +7,7 @@
 :: ==============================
 :: - VERBOSE  how verbose output should be if not set script sets it to YES
 :: - extensionFolderName          the name of the extension based on the top level foldername
+:: - extensionFolderPath          the path to the extension based on the top level foldername
 
 @ECHO off
 SETLOCAL ENABLEEXTENSIONS

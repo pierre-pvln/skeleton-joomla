@@ -81,12 +81,20 @@ IF %ERRORLEVEL% NEQ 0 (
 )
 IF %VERBOSE%==YES ECHO [%~n0 ] ... Missing files created succesfully.
 
-CALL %extensionFolderPath%/struc/create/github_repository.cmd
+CALL %extensionFolderPath%/struc/create/remote_github_repository.cmd
 IF %ERRORLEVEL% NEQ 0 (
-   SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... Script %extensionFolderPath%/struc/create/github_repository.cmd returned error %ERRORLEVEL%
+   SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... Script %extensionFolderPath%/struc/create/remote_github_repository.cmd returned error %ERRORLEVEL%
    GOTO ERROR_EXIT
 )
-IF %VERBOSE%==YES ECHO [%~n0 ] ... New gitgub repository created succesfully.
+IF %VERBOSE%==YES ECHO [%~n0 ] ... New github repository created succesfully.
+
+CALL %extensionFolderPath%/struc/create/local_git_repository_for_code.cmd
+IF %ERRORLEVEL% NEQ 0 (
+   SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... Script %extensionFolderPath%/struc/create/local_git_repository_for_code.cmd returned error %ERRORLEVEL%
+   GOTO ERROR_EXIT
+)
+IF %VERBOSE%==YES ECHO [%~n0 ] ... New github repository created succesfully.
+
 
 GOTO CLEAN_EXIT
 

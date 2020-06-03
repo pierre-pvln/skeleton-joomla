@@ -4,9 +4,21 @@
 :: Revision: 2019 04 25 - initial version
 ::           2020 03 12 - updated to new folder structure
 ::
+:: Required environment variables
+:: ==============================
+:: - extensionFolderPath          the path to the extension based on the top level foldername
 
 @ECHO off
 SETLOCAL ENABLEEXTENSIONS
+
+::
+:: Check if required environment variables are set.
+:: If not set them to a safe default value or exit with error.
+::
+IF "%extensionFolderPath%" == "" (
+   SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... extensionFolderPath environment variable not set.
+   GOTO ERROR_EXIT_SUBSCRIPT
+)
 
 :: Create default files
 ::

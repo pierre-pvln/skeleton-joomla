@@ -5,7 +5,8 @@
 ::
 :: Required environment variables
 :: ==============================
-:: - VERBOSE  how verbose output should be if not set script sets it to YES
+:: - VERBOSE                      how verbose output should be if not set script sets it to YES
+:: - extensionFolderPath          the path to the extension based on the top level foldername
 
 @ECHO off
 SETLOCAL ENABLEEXTENSIONS
@@ -16,6 +17,10 @@ SETLOCAL ENABLEEXTENSIONS
 :: 
 IF "%VERBOSE%" == "" (
    SET VERBOSE=YES
+)
+IF "%extensionFolderPath%" == "" (
+   SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... extensionFolderPath environment variable not set.
+   GOTO ERROR_EXIT_SUBSCRIPT
 )
 
 :: Create default files

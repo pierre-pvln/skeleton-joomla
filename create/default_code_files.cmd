@@ -7,6 +7,7 @@
 :: ==============================
 :: - VERBOSE                      how verbose output should be if not set script sets it to YES
 :: - extensionFolderName          the name of the extension based on the top level foldername
+:: - extensionFolderPath          the path to the extension based on the top level foldername
 
 @ECHO off
 SETLOCAL ENABLEEXTENSIONS
@@ -20,6 +21,10 @@ IF "%VERBOSE%" == "" (
 )
 IF "%extensionFolderName%" == "" (
    SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... extensionFolderName environment variable not set.
+   GOTO ERROR_EXIT_SUBSCRIPT
+)
+IF "%extensionFolderPath%" == "" (
+   SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... extensionFolderPath environment variable not set.
    GOTO ERROR_EXIT_SUBSCRIPT
 )
 
@@ -43,7 +48,7 @@ CD %extensionFolderPath%/code
 	) >README.md
 	
 	IF NOT EXIST src (
-		SET ERROR_MESSAGE=[ERROR] [%~n0 ] folder %extensionFolderPath%/code/src not found ...
+		SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... folder %extensionFolderPath%/code/src not found.
 		GOTO ERROR_EXIT_SUBSCRIPT
 	)
 	CD src

@@ -22,7 +22,7 @@ IF "%VERBOSE%" == "" (
    SET VERBOSE=YES
 )
 IF "%extensionFolderPath%" == "" (
-   SET ERROR_MESSAGE=[ERROR] [%~n0 ] extensionFolderPath environment variable not set ...
+   SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... extensionFolderPath environment variable not set.
    GOTO ERROR_EXIT_SUBSCRIPT
 )
 
@@ -85,7 +85,7 @@ IF NOT EXIST struc (
 )
 
 IF NOT EXIST @_started_* (
-	IF %VERBOSE%==YES ECHO [%~n0 ] ... Creating @_started_
+	IF %VERBOSE%==YES ECHO [%~n0 ] ... Creating @_started_%date:~9,4%_%date:~6,2%_%date:~3,2%_@
 	md @_started_%date:~9,4%_%date:~6,2%_%date:~3,2%_@
 )
 
