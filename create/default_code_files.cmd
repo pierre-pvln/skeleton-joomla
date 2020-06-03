@@ -131,6 +131,53 @@ CD %extensionFolderPath%/code
 			ECHO ^</ul^>
 		) >CHANGELOG.md
 	CD ..
+	
+	IF NOT EXIST set (
+		SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... folder %extensionFolderPath%/code/set not found.
+		GOTO ERROR_EXIT_SUBSCRIPT
+	)
+	CD set
+		IF NOT EXIST "files_to_exclude_in_zip.txt" (
+            ECHO #
+            ECHO # @package     build process scripts
+            ECHO # @author      Pierre Veelen, pierre@pvln.nl, www.pvln.nl
+            ECHO # @copyright   Copyright (C) 2018 Pierre Veelen. All rights reserved.
+            ECHO # @license     GNU General Public License version 2 or later.
+            ECHO #
+            ECHO # Files and folders to exclude from the extension package zip file 
+            ECHO #
+            ECHO. 
+            ECHO ##
+            ECHO # exclude windows files
+            ECHO ##
+            ECHO Thumbs.db
+            ECHO. 
+            ECHO ##
+            ECHO # exclude Git files & directories
+            ECHO ##
+            ECHO .gitignore
+            ECHO .git
+            ECHO. 
+            ECHO ##
+            ECHO # exclude settings directory
+            ECHO ##
+            ECHO set
+            ECHO.
+            ECHO ##
+            ECHO # exclude update_server directory
+            ECHO ##
+            ECHO update_server
+            ECHO. 
+            ECHO ##
+            ECHO # exclude files
+            ECHO ##
+            ECHO _version.txt
+            ECHO TODO.md
+            ECHO README.md
+            ECHO CHANGELOG.txt
+		) >files_to_exclude_in_zip.txt
+	CD ..	
+	
 IF %VERBOSE%==YES ECHO [%~n0 ] ... Files for %extensionFolderPath%/code created succesfully.
 
 GOTO CLEAN_EXIT_SUBSCRIPT
