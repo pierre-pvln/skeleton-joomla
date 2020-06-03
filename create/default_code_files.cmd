@@ -55,12 +55,12 @@ CD %extensionFolderPath%/code
 		IF NOT EXIST "README.md" (
 			ECHO --- 
 			ECHO README.md in /code/src 
-			ECHO # README file for the actual %extensionFolderName% code 
+			ECHO # README file for the actual %extensionFolderName% source code 
 			ECHO --- 
 		) >README.md
 		IF NOT EXIST "CHANGELOG.md" (
 			ECHO --- 
-			ECHO #  Changelog for the %extensionFolderName% Joomla! code
+			ECHO #  Changelog for the %extensionFolderName% Joomla! source code
 			ECHO ---
 			ECHO ^<h4^>v.0.0.1 %date:~9,4%-%date:~6,2%-%date:~3,2%^</h4^>
 			ECHO ^<ul^>
