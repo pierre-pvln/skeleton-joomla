@@ -1,4 +1,4 @@
-SET extensionfoldername=ipheionsites
+SET extensionfoldername=ipheiongeojsons
 
 cd ..\..\code
 
@@ -10,6 +10,10 @@ git init
 git config --local user.name "Pierre Veelen (%extensionFolderName%)"
 git config --local user.email pierre@pvln.nl
 git config --local color.ui auto
+
+# list settings
+git config --list
+pause
 
 git add .
 git commit -m "first commit"
