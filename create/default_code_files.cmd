@@ -141,7 +141,7 @@ CD %extensionFolderPath%/code
             ECHO #
             ECHO # @package     build process scripts
             ECHO # @author      Pierre Veelen, pierre@pvln.nl, www.pvln.nl
-            ECHO # @copyright   Copyright (C) 2018 Pierre Veelen. All rights reserved.
+            ECHO # @copyright   Copyright 2018 Pierre Veelen. All rights reserved.
             ECHO # @license     GNU General Public License version 2 or later.
             ECHO #
             ECHO # Files and folders to exclude from the extension package zip file 
