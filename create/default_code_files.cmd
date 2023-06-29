@@ -153,7 +153,7 @@ CD %extensionFolderPath%/code
             ECHO Thumbs.db
             ECHO. 
             ECHO ##
-            ECHO # exclude Git files & directories
+            ECHO # exclude Git files and directories
             ECHO ##
             ECHO .gitignore
             ECHO .git
