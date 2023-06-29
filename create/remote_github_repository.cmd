@@ -36,7 +36,7 @@ FOR /f "tokens=*" %%G IN ('curl -u %git_username%:%git_password% -H "Content-Typ
 :: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/422  unable to process 
 
 IF "%CURL_RESPONSE_CODE%" NEQ "201" (
-   SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... Could not create github repository for %extensionFolderName%.
+   SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... Could not create github repository for %extensionFolderName%. Responsecode %CURL_RESPONSE_CODE%.
    GOTO ERROR_EXIT_SUBSCRIPT
 )
 
