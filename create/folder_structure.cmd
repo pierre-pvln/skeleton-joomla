@@ -85,8 +85,8 @@ IF NOT EXIST struc (
 )
 
 IF NOT EXIST @_started_* (
-	IF %VERBOSE%==YES ECHO [%~n0 ] ... Creating @_started_%date:~9,4%_%date:~6,2%_%date:~3,2%_@
-	md @_started_%date:~9,4%_%date:~6,2%_%date:~3,2%_@
+	IF %VERBOSE%==YES ECHO [%~n0 ] ... Creating @_started_%date:~6,4%_%date:~3,2%_%date:~0,2%_@
+	md @_started_%date:~6,4%_%date:~3,2%_%date:~0,2%_@
 )
 
 GOTO CLEAN_EXIT_SUBSCRIPT

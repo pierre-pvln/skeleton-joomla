@@ -62,7 +62,7 @@ CD %extensionFolderPath%/code
 			ECHO --- 
 			ECHO #  Changelog for the %extensionFolderName% Joomla! source code
 			ECHO ---
-			ECHO ^<h4^>v.0.0.1 %date:~9,4%-%date:~6,2%-%date:~3,2%^</h4^>
+			ECHO ^<h4^>v.0.0.1 %date:~6,4%_%date:~3,2%_%date:~0,2%^</h4^>
 			ECHO ^<ul^>
 			ECHO ^<li^>Initial version^</li^>
 			ECHO ^</ul^>
@@ -70,7 +70,7 @@ CD %extensionFolderPath%/code
 		IF NOT EXIST "_version.txt" (
 			ECHO # Name:          _version.txt
 			ECHO # Purpose:       set the versioning elements to a value
-			ECHO # Author:        pierre@pvln.nl
+			ECHO # Author:        pierre@amultis.eu
 			ECHO #
 			ECHO # For extension: %extensionFolderName%
 			ECHO #
@@ -125,7 +125,7 @@ CD %extensionFolderPath%/code
 			ECHO --- 
 			ECHO #  Changelog for the %extensionFolderName% Joomla! test code:
 			ECHO ---
-			ECHO ^<h4^>v.0.0.1 %date:~9,4%-%date:~6,2%-%date:~3,2%^</h4^>
+			ECHO ^<h4^>v.0.0.1 %date:~6,4%_%date:~3,2%_%date:~0,2%^</h4^>
 			ECHO ^<ul^>
 			ECHO ^<li^>Initial version^</li^>
 			ECHO ^</ul^>
@@ -140,7 +140,7 @@ CD %extensionFolderPath%/code
 		IF NOT EXIST "files_to_exclude_in_zip.txt" (
             ECHO #
             ECHO # @package     build process scripts
-            ECHO # @author      Pierre Veelen, pierre@pvln.nl, www.pvln.nl
+            ECHO # @author      Pierre Veelen, pierre@amultis.eu, amultis.eu
             ECHO # @copyright   Copyright 2018 Pierre Veelen. All rights reserved.
             ECHO # @license     GNU General Public License version 2 or later.
             ECHO #

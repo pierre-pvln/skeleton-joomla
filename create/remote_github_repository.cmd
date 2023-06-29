@@ -28,7 +28,7 @@ CALL git_settings.cmd
 
 ::curl -u %git_username%:%git_password% -H "Content-Type: application/json"  -d "{\"name\":\"%extensionfoldername%\"}" https://api.github.com/user/repos
 
-FOR /f "tokens=*" %%G IN ('curl -u %git_username%:%git_password% -H "Content-Type: application/json" -d "{\"name\":\"%extensionFolderName%\"}" https://api.github.com/user/repos -w %%{http_code} -s') DO (
+FOR /f "tokens=*" %%G IN ('curl -u "Authorization: token %git_api_token%" -H "Content-Type: application/json" -d "{\"name\":\"%extensionFolderName%\"}" https://api.github.com/user/repos -w %%{http_code} -s') DO (
 	SET CURL_RESPONSE_CODE=%%G
 )
 

@@ -90,7 +90,7 @@ IF NOT EXIST "CHANGELOG.md" (
 	ECHO --- 
 	ECHO #  Changelog Scripts: Generic Joomla! extension structure creation scripts
 	ECHO ---
-	ECHO ^<h4^>v.0.0.1 %date:~9,4%-%date:~6,2%-%date:~3,2%^</h4^>
+	ECHO ^<h4^>v.0.0.1 %date:~6,4%_%date:~3,2%_%date:~0,2%^</h4^>
 	ECHO ^<ul^>
 	ECHO ^<li^>Initial version^</li^>
 	ECHO ^</ul^>
