@@ -26,12 +26,12 @@ IF "%extensionFolderPath%" == "" (
 
 :: Create local git repository
 ::
-CD %extensionFolderPath%/code
+CD %extensionFolderPath%/code/src
 
 git init
 
 git config --local user.name "Pierre Veelen (%extensionFolderName%)"
-git config --local user.email pierre@pvln.nl
+git config --local user.email pierre@amultis.eu
 git config --local color.ui auto
 
 :: list settings
