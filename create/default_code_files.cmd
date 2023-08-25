@@ -164,6 +164,11 @@ CD %extensionFolderPath%/code
             ECHO set
             ECHO.
             ECHO ##
+			ECHO # exclude test directory
+			ECHO ##
+			ECHO tst
+			ECHO.
+			ECHO ##
             ECHO # exclude update_server directory
             ECHO ##
             ECHO update_server
