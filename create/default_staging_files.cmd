@@ -2,6 +2,7 @@
 :: Purpose:  Create any missing default files
 :: Author:   pierre@pvln.nl
 :: Revision: 2020 03 12 - initial version
+::           2023 09 02 - added debug numbers 
 ::
 :: Required environment variables
 :: ==============================
@@ -11,6 +12,8 @@
 @ECHO off
 SETLOCAL ENABLEEXTENSIONS
 
+ECHO [%~n0 ] ... [0390]
+
 ::
 :: Check if required environment variables are set.
 :: If not set them to a safe default value or exit with error.
@@ -19,7 +22,7 @@ IF "%VERBOSE%" == "" (
    SET VERBOSE=YES
 )
 IF "%extensionFolderPath%" == "" (
-   SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... extensionFolderPath environment variable not set.
+   SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... [0391] extensionFolderPath environment variable not set.
    GOTO ERROR_EXIT_SUBSCRIPT
 )
 :: Create default files
@@ -27,10 +30,10 @@ IF "%extensionFolderPath%" == "" (
 :: ======================
 :: STAGING SCRIPTS
 :: ======================
-IF %VERBOSE%==YES ECHO [%~n0 ] ... Start creating files for %extensionFolderPath%/stg.
+IF %VERBOSE%==YES ECHO [%~n0 ] ... [0392] Start creating files for %extensionFolderPath%/stg.
 
 IF NOT EXIST %extensionFolderPath%/stg (
-   SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... folder %extensionFolderPath%/stg not found.
+   SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... [0393] folder %extensionFolderPath%/stg not found.
    GOTO ERROR_EXIT_SUBSCRIPT
 )
 CD %extensionFolderPath%/stg
@@ -88,7 +91,7 @@ IF NOT EXIST "CHANGELOG.md" (
 	ECHO ^</ul^>
 	) >CHANGELOG.md
 
-IF %VERBOSE%==YES ECHO [%~n0 ] ... Files for %extensionFolderPath%/stg created succesfully.
+IF %VERBOSE%==YES ECHO [%~n0 ] ... [0394] Files for %extensionFolderPath%/stg created succesfully.
 
 GOTO CLEAN_EXIT_SUBSCRIPT
 

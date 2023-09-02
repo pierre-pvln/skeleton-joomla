@@ -2,6 +2,7 @@
 :: Purpose:  Create any missing default files
 :: Author:   pierre@amultis.eu
 :: Revision: 2020 03 12 - initial version
+::           2023 09 02 - added debug numbers 
 ::
 :: Required environment variables
 :: ==============================
@@ -12,19 +13,22 @@
 @ECHO off
 SETLOCAL ENABLEEXTENSIONS
 
+ECHO [%~n0 ] ... [0380]
+
 ::
 :: Check if required environment variables are set.
 :: If not set them to a safe default value or exit with error.
 :: 
-IF "%VERBOSE%" == ""(
-   SET VERBOSE=YES
+IF "%VERBOSE%" == "" (
+   SET "VERBOSE=YES"
 )
+
 IF "%extensionFolderName%" == "" (
-   SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... extensionFolderName environment variable not set.
+   SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... [0381] extensionFolderName environment variable not set.
    GOTO ERROR_EXIT_SUBSCRIPT
 )
 IF "%extensionFolderPath%" == "" (
-   SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... extensionFolderPath environment variable not set.
+   SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... [0382] extensionFolderPath environment variable not set.
    GOTO ERROR_EXIT_SUBSCRIPT
 )
 
@@ -33,14 +37,14 @@ IF "%extensionFolderPath%" == "" (
 :: ======================
 :: ACTUAL CODE
 :: ======================
-IF %VERBOSE%==YES ECHO [%~n0 ] ... Start creating files for %extensionFolderPath%/code.
+IF %VERBOSE%==YES ECHO [%~n0 ] ... [0383] Start creating files for %extensionFolderPath%/code.
 
 IF NOT EXIST %extensionFolderPath%/code (
-   SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... folder %extensionFolderPath%/code not found.
+   SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... [0384] folder %extensionFolderPath%/code not found.
    GOTO ERROR_EXIT_SUBSCRIPT
 )
 CD %extensionFolderPath%/code
-    IF NOT EXIST "README.md"(
+    IF NOT EXIST "README.md" (
         ECHO --- 
         ECHO README.md in /code 
         ECHO # README file for the %extensionFolderName% Joomla! extension
@@ -48,17 +52,17 @@ CD %extensionFolderPath%/code
     ) >README.md
     
     IF NOT EXIST src (
-        SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... folder %extensionFolderPath%/code/src not found.
+        SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... [0385] folder %extensionFolderPath%/code/src not found.
         GOTO ERROR_EXIT_SUBSCRIPT
     )
     CD src
-        IF NOT EXIST "README.md"(
+        IF NOT EXIST "README.md" (
             ECHO ---
             ECHO README.md in /code/src
             ECHO # README file for the actual %extensionFolderName% source code
             ECHO ---
         ) >README.md
-        IF NOT EXIST "CHANGELOG.md"(
+        IF NOT EXIST "CHANGELOG.md" (
             ECHO ---
             ECHO #  Changelog for the %extensionFolderName% Joomla! source code
             ECHO ---
@@ -97,12 +101,12 @@ CD %extensionFolderPath%/code
         ) >_version.txt
     CD ..
 
-    IF NOT EXIST doc(
-        SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... folder %extensionFolderPath%/code/doc not found.
+    IF NOT EXIST doc (
+        SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... [0386] folder %extensionFolderPath%/code/doc not found.
         GOTO ERROR_EXIT_SUBSCRIPT
     )
     CD doc
-        IF NOT EXIST "README.md"(
+        IF NOT EXIST "README.md" (
             ECHO ---
             ECHO README.md in /code/doc
             ECHO # Folder with additional documentation for %extensionFolderName% extension
@@ -110,8 +114,8 @@ CD %extensionFolderPath%/code
         ) >README.md
     CD ..
 
-    IF NOT EXIST tst(
-        SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... folder %extensionFolderPath%/code/tst not found.
+    IF NOT EXIST tst (
+        SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... [0387] folder %extensionFolderPath%/code/tst not found.
         GOTO ERROR_EXIT_SUBSCRIPT
     )        
     CD tst
@@ -133,7 +137,7 @@ CD %extensionFolderPath%/code
     CD ..
 
     IF NOT EXIST set (
-        SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... folder %extensionFolderPath%/code/set not found.
+        SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... [0388] folder %extensionFolderPath%/code/set not found.
         GOTO ERROR_EXIT_SUBSCRIPT
     )
     CD set
@@ -183,7 +187,7 @@ CD %extensionFolderPath%/code
         ) >files_to_exclude_in_zip.txt
     CD ..
 
-IF %VERBOSE%==YES ECHO [%~n0 ] ... Files for %extensionFolderPath%/code created succesfully.
+IF %VERBOSE%==YES ECHO [%~n0 ] ... [0389] Files for %extensionFolderPath%/code created succesfully.
 
 GOTO CLEAN_EXIT_SUBSCRIPT
 

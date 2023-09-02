@@ -22,8 +22,11 @@ SETLOCAL ENABLEEXTENSIONS ENABLEDELAYEDEXPANSION
 IF "%VERBOSE%" == "" (
    SET VERBOSE=YES
 )
+
+ECHO [%~n0 ] ... [0200]
+
 IF "%extensionFolderName%" == "" (
-   SET ERROR_MESSAGE=[ERROR] [%~n0 ] extensionFolderName environment variable not set ...
+   SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... [0201] extensionFolderName environment variable not set ...
    GOTO ERROR_EXIT_SUBSCRIPT
 )
 
@@ -69,36 +72,36 @@ EXIT /B 0
 ::
 IF %VERBOSE%==YES (
 	ECHO [%~n0 ] ... 
-	ECHO [%~n0 ] ... Running GIT_FLOW_INIT for: %local_git_repository%
+	ECHO [%~n0 ] ... [0202] Running GIT_FLOW_INIT for: %local_git_repository%
 	ECHO [%~n0 ] ... 
 )	
 CD %local_git_repository%
-IF %VERBOSE%==YES ECHO [%~n0 ] ... Currently running in %CD%
+IF %VERBOSE%==YES ECHO [%~n0 ] ... [0203] Currently running in %CD%
 ::
 :: check if folder is under git control
 ::
-IF %VERBOSE%==YES ECHO [%~n0 ] ... Check if folder is under git control
+IF %VERBOSE%==YES ECHO [%~n0 ] ... [0204] Check if folder is under git control
 git status
 :: if not clone repository in folder and set default values
 IF %ERRORLEVEL% NEQ 0 (
-   IF %VERBOSE%==YES ECHO [%~n0 ] ... This folder is not under git control: Initializing git
+   IF %VERBOSE%==YES ECHO [%~n0 ] ... [0205] This folder is not under git control: Initializing git
    CD ..
    git clone git@github.com:%git_username%/%remote_git_repository%.git %local_git_repository%
 
    CD %local_git_repository%
-   IF %VERBOSE%==YES ECHO [%~n0 ] ... Currently running in %CD%
+   IF %VERBOSE%==YES ECHO [%~n0 ] ... [0206] Currently running in %CD%
    git status
    IF !ERRORLEVEL! NEQ 0 (
-		SET ERROR_MESSAGE=[ERROR] [%~n0 ] Remote repository git@github.com:%git_username%/%remote_git_repository%.git not found ...
+		SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... [0207] Remote repository git@github.com:%git_username%/%remote_git_repository%.git not found ...
 		GOTO ERROR_EXIT_SUBSCRIPT
    )
    git config --local user.name "Pierre Veelen (%extensionFolderName%)"
    git config --local user.email pierre@pvln.nl
    git config --local color.ui auto
 )
-IF %VERBOSE%==YES ECHO [%~n0 ] ... This folder is under git control
+IF %VERBOSE%==YES ECHO [%~n0 ] ... [0208] This folder is under git control
 
-IF %VERBOSE%==YES ECHO [%~n0 ] ... Determine current local branch name
+IF %VERBOSE%==YES ECHO [%~n0 ] ... [0209] Determine current local branch name
 :: Get current branch in environment variable
 :: https://ss64.com/nt/for_cmd.html
 ::
@@ -108,7 +111,7 @@ FOR /F %%G IN ('git rev-parse --abbrev-ref HEAD') DO SET currentGitBranch=%%G
 :: 
 SET currentGitBranch=%currentGitBranch: =%
 :: show the result 
-IF %VERBOSE%==YES ECHO [%~n0 ] ... Current branch: %currentGitBranch%
+IF %VERBOSE%==YES ECHO [%~n0 ] ... [0210] Current branch: %currentGitBranch%
 :: current git branch is determined 
 
 IF "%currentGitBranch%" == "master" (

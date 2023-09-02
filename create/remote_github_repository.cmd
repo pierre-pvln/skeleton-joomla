@@ -2,6 +2,7 @@
 :: Purpose:  Create repository at github
 :: Author:   pierre@pvln.nl
 :: Revision: 2020 06 03 - initial version
+::           2023 09 02 - added debug numbers 
 ::
 :: Required environment variables
 :: ==============================
@@ -10,12 +11,14 @@
 @ECHO off
 SETLOCAL ENABLEEXTENSIONS
 
+ECHO [%~n0 ] ... [0400]
+
 ::
 :: Check if required environment variables are set.
 :: If not set them to a safe default value or exit with error.
 :: 
 IF "%extensionFolderName%" == "" (
-   SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... extensionFolderName environment variable not set.
+   SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... [0401] extensionFolderName environment variable not set.
    GOTO ERROR_EXIT_SUBSCRIPT
 )
 
@@ -23,7 +26,8 @@ IF "%extensionFolderName%" == "" (
 ::
 SET "CURL_RESPONSE_CODE=" 
 
-cd ..\..\_secrets
+cd ..\..\..\_secrets
+
 CALL git_settings.cmd
 
 :: Previous version; not supported anymore
@@ -37,7 +41,7 @@ FOR /f "tokens=*" %%G IN ('curl -H "Authorization: token %git_api_token%" -H "Co
 :: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/422  unable to process 
 
 IF "%CURL_RESPONSE_CODE%" NEQ "201" (
-   SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... Could not create github repository for %extensionFolderName%. Responsecode %CURL_RESPONSE_CODE%.
+   SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... [0402] Could not create github repository for %extensionFolderName%. Responsecode %CURL_RESPONSE_CODE%.
    GOTO ERROR_EXIT_SUBSCRIPT
 )
 
