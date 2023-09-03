@@ -26,7 +26,16 @@ IF "%extensionFolderName%" == "" (
 ::
 SET "CURL_RESPONSE_CODE=" 
 
-cd ..\..\..\_secrets
+:: ..\..\..\ assumes:
+:: for_joomla4\<extensiontype>\<baseline library>\<extentionname>\
+:: example: for_joomla4\module\Plotly\amu_plotly_lineplots\
+
+:: The preferred way:
+:: ==================  
+:: ..\..\ assumes:
+:: for_joomla4\<extensiontype>\<extentionname>
+:: example: for_joomla4\module\amu_plotly_lineplots\
+cd ..\..\_secrets
 
 CALL git_settings.cmd
 
