@@ -2,11 +2,8 @@
 :: Purpose:  Create any missing default files
 :: Author:   pierre@amultis.eu
 :: Revision: 2020 03 12 - initial version
-<<<<<<< HEAD
 ::           2023 06 29 - updated date spec
-=======
 ::           2023 09 02 - added debug numbers 
->>>>>>> 6a6ceadbbe016b95ca362aae768764190db89be3
 ::
 :: Required environment variables
 :: ==============================
