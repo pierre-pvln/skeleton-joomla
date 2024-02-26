@@ -5,6 +5,7 @@
 ::           2020 03 13 - set subfolder added
 ::			 			- changed location of VERBOSE messages 
 ::           2023 06 29 - updated date spec 
+::           2023 09 02 - added debug numbers 
 ::
 :: Required environment variables
 :: ==============================
@@ -15,6 +16,8 @@
 @ECHO off
 SETLOCAL ENABLEEXTENSIONS
 
+ECHO [%~n0 ] ... [0100]
+
 ::
 :: Check if required environment variables are set.
 :: If not set them to a safe default value or exit with error.
@@ -22,8 +25,9 @@ SETLOCAL ENABLEEXTENSIONS
 IF "%VERBOSE%" == "" (
    SET VERBOSE=YES
 )
+
 IF "%extensionFolderPath%" == "" (
-   SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... extensionFolderPath environment variable not set.
+   SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... [0101] extensionFolderPath environment variable not set.
    GOTO ERROR_EXIT_SUBSCRIPT
 )
 
@@ -32,32 +36,32 @@ CD %extensionFolderPath%
 :: Create folder structure
 ::
 IF NOT EXIST _bin (
-	IF %VERBOSE%==YES ECHO [%~n0 ] ... Creating _bin
+	IF %VERBOSE%==YES ECHO [%~n0 ] ... [0102] Creating _bin
 	md _bin
 )
 
 IF NOT EXIST _set (
-	IF %VERBOSE%==YES ECHO [%~n0 ] ... Creating _set	 
+	IF %VERBOSE%==YES ECHO [%~n0 ] ... [0103] Creating _set	 
 	md _set
 )
 
 IF NOT EXIST _tmp (
-	IF %VERBOSE%==YES ECHO [%~n0 ] ... Creating _tmp
+	IF %VERBOSE%==YES ECHO [%~n0 ] ... [0104] Creating _tmp
 	md _tmp
 )
 
 IF NOT EXIST bld (
-	IF %VERBOSE%==YES ECHO [%~n0 ] ... Creating bld
+	IF %VERBOSE%==YES ECHO [%~n0 ] ... [0105] Creating bld
 	md bld
 )
 
 IF NOT EXIST dpl (
-	IF %VERBOSE%==YES ECHO [%~n0 ] ... Creating dpl
+	IF %VERBOSE%==YES ECHO [%~n0 ] ... [0106] Creating dpl
 	md dpl
 )
 
 IF NOT EXIST misc (
-	IF %VERBOSE%==YES ECHO [%~n0 ] ... Creating misc	 
+	IF %VERBOSE%==YES ECHO [%~n0 ] ... [0107] Creating misc	 
 	md misc
 )
 	CD misc
@@ -65,7 +69,7 @@ IF NOT EXIST misc (
 	CD ..
 
 IF NOT EXIST code (
-	IF %VERBOSE%==YES ECHO [%~n0 ] ... Creating code
+	IF %VERBOSE%==YES ECHO [%~n0 ] ... [0108] Creating code
 	md code
 )
 	CD code
@@ -76,17 +80,17 @@ IF NOT EXIST code (
 	CD ..
 
 IF NOT EXIST stg (
-	IF %VERBOSE%==YES ECHO [%~n0 ] ... Creating stg 
+	IF %VERBOSE%==YES ECHO [%~n0 ] ... [0109] Creating stg 
 	md stg
 )
 
 IF NOT EXIST struc (
-	IF %VERBOSE%==YES ECHO [%~n0 ] ... Creating struc
+	IF %VERBOSE%==YES ECHO [%~n0 ] ... [0110] Creating struc
 	md struc
 )
 
 IF NOT EXIST @_started_* (
-	IF %VERBOSE%==YES ECHO [%~n0 ] ... Creating @_started_ %date:~6,4%_%date:~3,2%_%date:~0,2%_@
+	IF %VERBOSE%==YES ECHO [%~n0 ] ... [0111] Creating @_started_%date:~6,4%_%date:~3,2%_%date:~0,2%_@
 	md @_started_%date:~6,4%_%date:~3,2%_%date:~0,2%_@
 )
 

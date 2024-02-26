@@ -2,7 +2,11 @@
 :: Purpose:  Create any missing default files
 :: Author:   pierre@amultis.eu
 :: Revision: 2020 03 12 - initial version
+<<<<<<< HEAD
 ::           2023 06 29 - updated date spec
+=======
+::           2023 09 02 - added debug numbers 
+>>>>>>> 6a6ceadbbe016b95ca362aae768764190db89be3
 ::
 :: Required environment variables
 :: ==============================
@@ -10,6 +14,8 @@
 
 @ECHO off
 SETLOCAL ENABLEEXTENSIONS
+
+ECHO [%~n0 ] ... [0310]
 
 ::
 :: Check if required environment variables are set.
@@ -19,7 +25,7 @@ IF "%VERBOSE%" == "" (
    SET VERBOSE=YES
 )
 IF "%extensionFolderPath%" == "" (
-   SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... extensionFolderPath environment variable not set.
+   SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... [0311] extensionFolderPath environment variable not set.
    GOTO ERROR_EXIT_SUBSCRIPT
 )
 
@@ -28,10 +34,10 @@ IF "%extensionFolderPath%" == "" (
 :: ======================
 :: STRUCTURE SCRIPTS
 :: ======================
-IF %VERBOSE%==YES ECHO [%~n0 ] ... Start creating files for %extensionFolderPath%/struc.
+IF %VERBOSE%==YES ECHO [%~n0 ] ... [0312] Start creating files for %extensionFolderPath%/struc.
 
 IF NOT EXIST %extensionFolderPath%/struc (
-   SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... folder %extensionFolderPath%/struc not found.
+   SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... [0313] folder %extensionFolderPath%/struc not found.
    GOTO ERROR_EXIT_SUBSCRIPT
 )
 CD %extensionFolderPath%/struc
@@ -96,7 +102,7 @@ IF NOT EXIST "CHANGELOG.md" (
 	ECHO ^<li^>Initial version^</li^>
 	ECHO ^</ul^>
 	) >CHANGELOG.md
-IF %VERBOSE%==YES ECHO [%~n0 ] ... Files for %extensionFolderPath%/struc created succesfully.
+IF %VERBOSE%==YES ECHO [%~n0 ] ... [0314] Files for %extensionFolderPath%/struc created succesfully.
 
 GOTO CLEAN_EXIT_SUBSCRIPT
 

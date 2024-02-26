@@ -2,6 +2,7 @@
 :: Purpose:  make the code folder a git repository and link it to the remote
 :: Author:   pierre@pvln.nl
 :: Revision: 2020 06 03 - initial version
+::           2023 09 02 - added debug numbers 
 ::
 :: Required environment variables
 :: ==============================
@@ -11,35 +12,33 @@
 @ECHO off
 SETLOCAL ENABLEEXTENSIONS
 
+ECHO [%~n0 ] ... [0500]
+
 ::
 :: Check if required environment variables are set.
 :: If not set them to a safe default value or exit with error.
 :: 
 IF "%extensionFolderName%" == "" (
-   SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... extensionFolderName environment variable not set.
+   SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... [0501] extensionFolderName environment variable not set.
    GOTO ERROR_EXIT_SUBSCRIPT
 )
 IF "%extensionFolderPath%" == "" (
-   SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... extensionFolderPath environment variable not set.
+   SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... [0502] extensionFolderPath environment variable not set.
    GOTO ERROR_EXIT_SUBSCRIPT
 )
 
 :: Create local git repository
 ::
-CD %extensionFolderPath%/code
-
-dir
-pause
+CD %extensionFolderPath%/code/src
 
 git init
 
 git config --local user.name "Pierre Veelen (%extensionFolderName%)"
-git config --local user.email pierre@pvln.nl
+git config --local user.email pierre@amultis.eu
 git config --local color.ui auto
 
 :: list settings
 git config --list
-pause
 
 git add .
 git commit -m "first commit"

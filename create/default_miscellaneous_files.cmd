@@ -2,6 +2,7 @@
 :: Purpose:  Create any missing default files
 :: Author:   pierre@pvln.nl
 :: Revision: 2020 03 12 - initial version
+::           2023 09 02 - added debug numbers 
 ::
 :: Required environment variables
 :: ==============================
@@ -12,6 +13,8 @@
 @ECHO off
 SETLOCAL ENABLEEXTENSIONS
 
+ECHO [%~n0 ] ... [0370]
+
 ::
 :: Check if required environment variables are set.
 :: If not set them to a safe default value or exit with error.
@@ -20,11 +23,11 @@ IF "%VERBOSE%" == "" (
    SET VERBOSE=YES
 )
 IF "%extensionFolderName%" == "" (
-   SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... extensionFolderName environment variable not set.
+   SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... [0371] extensionFolderName environment variable not set.
    GOTO ERROR_EXIT_SUBSCRIPT
 )
 IF "%extensionFolderPath%" == "" (
-   SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... extensionFolderPath environment variable not set ...
+   SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... [0372] extensionFolderPath environment variable not set ...
    GOTO ERROR_EXIT_SUBSCRIPT
 )
 
@@ -33,10 +36,10 @@ IF "%extensionFolderPath%" == "" (
 :: ======================
 :: MISCELLANEOUS
 :: ======================
-IF %VERBOSE%==YES ECHO [%~n0 ] ... Start creating files for %extensionFolderPath%/misc.
+IF %VERBOSE%==YES ECHO [%~n0 ] ... [0373] Start creating files for %extensionFolderPath%/misc.
 
 IF NOT EXIST %extensionFolderPath%/misc (
-   SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... folder %extensionFolderPath%/misc not found.
+   SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... [0374] folder %extensionFolderPath%/misc not found.
    GOTO ERROR_EXIT_SUBSCRIPT
 )
 CD %extensionFolderPath%/misc
@@ -46,7 +49,7 @@ IF NOT EXIST "README.md" (
 	ECHO # Folder for miscellaneous info for the %extensionFolderName% Joomla! extension.
 	ECHO ---
 	) >README.md
-IF %VERBOSE%==YES ECHO [%~n0 ] ... Files for %extensionFolderPath%/misc created succesfully.
+IF %VERBOSE%==YES ECHO [%~n0 ] ... [0375] Files for %extensionFolderPath%/misc created succesfully.
 
 GOTO CLEAN_EXIT_SUBSCRIPT
 
