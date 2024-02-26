@@ -8,6 +8,7 @@
 :: ==============================
 :: - extensionFolderName          the name of the extension based on the top level foldername
 :: - extensionFolderPath          the path to the extension based on the top level foldername
+:: - githubDestination            the github username including git@github.com:
 
 @ECHO off
 SETLOCAL ENABLEEXTENSIONS
@@ -26,6 +27,10 @@ IF "%extensionFolderPath%" == "" (
    SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... [0502] extensionFolderPath environment variable not set.
    GOTO ERROR_EXIT_SUBSCRIPT
 )
+IF "%githubDestination%" == "" (
+   SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... [0503] githubDestination environment variable not set.
+   GOTO ERROR_EXIT_SUBSCRIPT
+)
 
 :: Create local git repository
 ::
@@ -34,7 +39,7 @@ CD %extensionFolderPath%/code/src
 git init
 
 git config --local user.name "Pierre Veelen (%extensionFolderName%)"
-git config --local user.email pierre@amultis.eu
+git config --local user.email pierre@amultis.dev
 git config --local color.ui auto
 
 :: list settings
@@ -42,7 +47,7 @@ git config --list
 
 git add .
 git commit -m "first commit"
-git remote add origin git@github.com:pierre-pvln/%extensionFolderName%.git
+git remote add origin %githubDestination%/%extensionFolderName%.git
 git push -u origin master
 
 GOTO CLEAN_EXIT_SUBSCRIPT
