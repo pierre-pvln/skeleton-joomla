@@ -12,7 +12,7 @@ SET githubDestination=git@github.com-pierre_amultis_dev:Pierre-AmultisDev
 SET joomla_extensionname=MY_NEW_EXTENSION
 IF NOT EXIST %joomla_extensionname%  (md %joomla_extensionname%)
 cd %joomla_extensionname%
-git clone %githubSource%/skeleton-joomla.git struc
+git clone git@github.com:%githubSource%/skeleton-joomla.git struc
 cd struc
 _create-it-all.cmd
 ```
