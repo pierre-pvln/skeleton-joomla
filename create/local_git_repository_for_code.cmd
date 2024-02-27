@@ -36,18 +36,28 @@ IF "%githubDestination%" == "" (
 ::
 CD %extensionFolderPath%/code/src
 
+IF %VERBOSE%==YES ECHO [%~n0 ] ... [0511] Git init.
 git init
 
+IF %VERBOSE%==YES ECHO [%~n0 ] ... [0512] Git config.
 git config --local user.name "Pierre Veelen (%extensionFolderName%)"
 git config --local user.email pierre@amultis.dev
 git config --local color.ui auto
 
+IF %VERBOSE%==YES ECHO [%~n0 ] ... [0513] Git show settings.
 :: list settings
 git config --list
 
+IF %VERBOSE%==YES ECHO [%~n0 ] ... [0514] Git add files.
 git add .
+
+IF %VERBOSE%==YES ECHO [%~n0 ] ... [0515] Git first commit.
 git commit -m "first commit"
+
+IF %VERBOSE%==YES ECHO [%~n0 ] ... [0516] Git add remote detination %githubDestination%/%extensionFolderName%.git .
 git remote add origin %githubDestination%/%extensionFolderName%.git
+
+IF %VERBOSE%==YES ECHO [%~n0 ] ... [0517] Git push to remote.
 git push -u origin master
 
 GOTO CLEAN_EXIT_SUBSCRIPT
