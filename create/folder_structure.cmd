@@ -94,6 +94,11 @@ IF NOT EXIST @_started_* (
 	md @_started_%date:~6,4%_%date:~3,2%_%date:~0,2%_@
 )
 
+IF NOT EXIST @_%joomla_extensionname%_@ (
+	IF %VERBOSE%==YES ECHO [%~n0 ] ... [0112] Creating @_%joomla_extensionname%_@
+	md @_%joomla_extensionname%_@
+)
+
 GOTO CLEAN_EXIT_SUBSCRIPT
 
 :ERROR_EXIT_SUBSCRIPT
