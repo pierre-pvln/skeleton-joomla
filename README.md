@@ -14,7 +14,7 @@ IF NOT EXIST %joomla_extensionname%  (md %joomla_extensionname%)
 cd %joomla_extensionname%
 git clone %githubSource%/skeleton-joomla.git struc
 cd struc
-_create-it-all.cmd
+call _create-it-all.cmd >..\_create-it-all_log.txt
 ```
 Git Flow has now been initiated for all the relevant directories.<br/>
 The assumption is that during the development of the extension the build, stage, deploy or skeleton process might be updated also.<br/>
